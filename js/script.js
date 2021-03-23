@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var r = new Loader();
     r.require([
-            "../js/slider.js"
+            "./js/slider.js"
 
         ],
         function() {
