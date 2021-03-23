@@ -42,20 +42,133 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    var l = new Loader();
-    l.require([
-            "../js/typed.min.js"
+    // var l = new Loader();
+    // l.require([
+    //         "../js/typed.min.js"
+
+    //     ],
+    //     function() {
+
+    //         var typed = new Typed('.print-text', {
+    //             strings: ["digital marketing campaigns", "mobile shopping", "Facebook shopping", "Instagram shopping", "ads campaigns", "e-mail campaigns", "Office365 sync", "CRM integration", "ERP integration"],
+    //             typeSpeed: 70,
+    //             backSpeed: 50,
+    //             loop: true,
+    //             backDelay: 1500
+    //         });
+
+    //     });
+
+    var r = new Loader();
+    r.require([
+            "../js/slider.js"
 
         ],
         function() {
 
-            var typed = new Typed('.print-text', {
-                strings: ["digital marketing campaigns", "mobile shopping", "Facebook shopping", "Instagram shopping", "ads campaigns", "e-mail campaigns", "Office365 sync", "CRM integration", "ERP integration"],
-                typeSpeed: 70,
-                backSpeed: 50,
+
+
+            class SiemaWithDots extends Siema {
+
+                addDots() {
+                    // create a contnier for all dots
+                    // add a class 'dots' for styling reason
+                    this.dots = document.createElement('div');
+                    this.dots.classList.add('dots');
+
+                    // loop through slides to create a number of dots
+                    for (let i = 0; i < Math.ceil((this.innerElements.length + (this.perPage - 1)) / this.perPage); i++) {
+                        // create a dot
+                        const dot = document.createElement('button');
+
+                        // add a class to dot
+                        dot.classList.add('dots__item');
+
+                        // add an event handler to each of them
+                        dot.addEventListener('click', () => {
+                            this.goTo(i);
+                        })
+
+                        // append dot to a container for all of them
+                        this.dots.appendChild(dot);
+                    }
+
+                    // add the container full of dots after selector
+                    this.selector.parentNode.insertBefore(this.dots, this.selector.nextSibling);
+                }
+
+                updateDots() {
+                    // loop through all dots
+                    for (let i = 0; i < this.dots.querySelectorAll('button').length; i++) {
+                        // if current dot matches currentSlide prop, add a class to it, remove otherwise
+                        const addOrRemove = this.currentSlide === i ? 'add' : 'remove';
+                        this.dots.querySelectorAll('button')[i].classList[addOrRemove]('dots__item--active');
+                    }
+                }
+                printSlideIndex() {
+                        const slideNumber = Math.abs(this.currentSlide);
+                        console.log(slideNumber)
+                        document.querySelector('.slider-title').textContent = this.innerElements[slideNumber].getAttribute('data-title');
+                        document.querySelector('.slider-descr').textContent = this.innerElements[slideNumber].getAttribute('data-descr');
+                        document.querySelector('.slider-content-inner').classList.remove('text-show');
+                        setTimeout(function() {
+                            document.querySelector('.slider-content-inner').classList.add('text-show');
+                        }, 300);
+                        document.querySelector('.current-slide').textContent = slideNumber + 1;
+                        document.querySelector('.total-slides').textContent = this.innerElements.length;
+                        console.log(this.innerElements.length);
+
+
+                    }
+                    // SlideIndex() {
+                    //     if (this.currentSlide == 0) {
+                    //         $('.slider-prev').addClass('hiden')
+                    //     } else {
+                    //         $('.slider-prev').removeClass('hiden')
+                    //     }
+                    //     if (this.innerElements.length < (this.currentSlide + this.perPage + 1)) {
+                    //         $('.slider-next').addClass('hiden')
+                    //     } else {
+                    //         $('.slider-next').removeClass('hiden')
+                    //     }
+                    // }
+            }
+
+            var servSlider = new SiemaWithDots({
+                selector: '.case-slider',
+                duration: 400,
+                easing: 'ease-out',
+                startIndex: 1,
+                draggable: false,
+                multipleDrag: false,
+                threshold: 90,
                 loop: true,
-                backDelay: 1500
+                rtl: false,
+                perPage: {
+                    664: 2,
+                    1024: 3,
+                },
+                onInit: function() {
+                    this.addDots();
+                    this.updateDots();
+                    this.printSlideIndex();
+                },
+                onChange: function() {
+                    this.updateDots();
+                    this.printSlideIndex();
+                }
             });
+
+
+            document.querySelector('.next').addEventListener('click', function(e) {
+                servSlider.next()
+            })
+
+            document.querySelector('.prev').addEventListener('click', function(e) {
+                servSlider.prev()
+            })
+
+
 
         });
 

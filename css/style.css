@@ -37,17 +37,27 @@
 }
 
 section+section {
-    margin-top: 5rem;
+    margin-top: 8rem;
 }
 
 .blog-img {
     height: 100%;
+    overflow: hidden;
+}
+
+.cursor-watch {
+    cursor: url('../img/blog/cursor-watch.png'), url('../img/blog/cursor-watch.png'), move;
+}
+
+.cursor-read {
+    cursor: url('../img/blog/cursor-read.png'), url('../img/blog/cursor-read.png'), move;
 }
 
 .blog-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 400ms ease-in;
 }
 
 .blog-descr {
@@ -61,4 +71,125 @@ section+section {
 
 .blog-descr .common-text {
     margin-bottom: 2.5rem;
+}
+
+.main-link {
+    position: relative;
+}
+
+.cta-more {
+    color: #004DFF;
+    position: relative;
+    width: auto;
+    z-index: 10;
+    display: flex;
+}
+
+.cta-more-label {
+    margin-left: 60px;
+    font-size: 1.2rem;
+}
+
+.cta-more-box {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    transform: translate(0, -50%);
+    border-radius: 25px;
+    border: 1px solid #004DFF;
+    transition: all 0.2s ease;
+    transition-property: width;
+}
+
+.main-cta:hover .cta-more-box {
+    width: calc(100% + 30px);
+}
+
+.img-arrow-right {
+    width: 24px;
+    position: absolute;
+    left: 22px;
+}
+
+.case-slider {
+    width: 100%;
+}
+
+.case {
+    overflow: hidden;
+}
+
+.case-slide {
+    transition: 200ms ease-in;
+    transition-property: transform;
+    perspective: 1000px;
+}
+
+.case-slider img {
+    width: 100%;
+}
+
+.slider-content {
+    min-height: 16rem;
+    position: relative;
+}
+
+.slider-content-inner {
+    visibility: hidden;
+    transform: translate(0, 2px);
+    opacity: 0;
+    transition: 200ms ease-in;
+    transition-property: visibility, transform, opacity;
+}
+
+.slider-content-inner.text-show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.case-slide {
+    margin: 0 0.5rem;
+}
+
+.slide-button {
+    border: 1px solid #004DFF;
+    background: transparent;
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    margin: 0 0.35rem;
+    transition: 200ms ease-in;
+    transition-property: transform;
+}
+
+.slide-button:focus {
+    outline: none;
+}
+
+.slide-button:hover {
+    transform: scale(1.14);
+}
+
+.slide-button img {
+    width: 100%;
+    max-width: 35px;
+}
+
+.sliders-controls {
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    transform: translate(-100%, 0);
+    padding-right: 2rem;
+}
+
+.number-slides {
+    text-align: center;
+}
+
+.number-slides {
+    margin-top: 1rem;
 }
