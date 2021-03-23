@@ -1,7 +1,7 @@
 WebFontConfig = {
     custom: {
         families: ['Graphik'],
-        urls: ['../css/font.css']
+        urls: ['./css/font.css']
     }
 };
 
