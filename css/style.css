@@ -1,15 +1,18 @@
 .h2 {
     font-size: 3rem;
     line-height: 1.1;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: .25rem;
     color: var(--black);
+}
+
+.font-light {
+    font-weight: 300;
 }
 
 .h4 {
     font-size: 2rem;
     line-height: 1.2;
-    font-weight: 400;
     margin-bottom: 1rem;
 }
 
@@ -23,10 +26,10 @@
 }
 
 .sub-title {
-    font-weight: 400;
+    font-weight: 300;
     color: var(--gray-100);
     font-size: 1.25rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .capture {
@@ -43,6 +46,25 @@ section+section {
 .blog-img {
     height: 100%;
     overflow: hidden;
+    display: block;
+}
+
+.animate {
+    visibility: hidden;
+}
+
+.blog-img img.animate-active {
+    animation: slide-up 600ms ease forwards;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translate(0, -100%);
+    }
+    100% {
+        transform: translate(0, 0);
+        visibility: visible;
+    }
 }
 
 .cursor-watch {
@@ -137,6 +159,7 @@ section+section {
 }
 
 .slider-content-inner {
+    margin-top: 1rem;
     visibility: hidden;
     transform: translate(0, 2px);
     opacity: 0;
@@ -192,4 +215,19 @@ section+section {
 
 .number-slides {
     margin-top: 1rem;
+}
+
+.slider-title {
+    font-size: 1.8rem;
+}
+
+.slider-descr {
+    font-size: 1rem;
+}
+
+.slider-content .slider-capture {
+    display: block;
+    margin-bottom: -0.35rem;
+    font-weight: bold;
+    font-size: 0.8rem;
 }

@@ -68,73 +68,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-            class SiemaWithDots extends Siema {
 
-                addDots() {
-                    // create a contnier for all dots
-                    // add a class 'dots' for styling reason
-                    this.dots = document.createElement('div');
-                    this.dots.classList.add('dots');
+            function printSlideIndex() {
+                const slideNumber = Math.abs(this.currentSlide);
+                console.log(this.currentSlide)
+                document.querySelector('.slider-title').textContent = this.innerElements[slideNumber].getAttribute('data-title');
+                document.querySelector('.slider-descr').textContent = this.innerElements[slideNumber].getAttribute('data-descr');
+                document.querySelector('.slider-capture').textContent = this.innerElements[slideNumber].getAttribute('data-capture');
 
-                    // loop through slides to create a number of dots
-                    for (let i = 0; i < Math.ceil((this.innerElements.length + (this.perPage - 1)) / this.perPage); i++) {
-                        // create a dot
-                        const dot = document.createElement('button');
-
-                        // add a class to dot
-                        dot.classList.add('dots__item');
-
-                        // add an event handler to each of them
-                        dot.addEventListener('click', () => {
-                            this.goTo(i);
-                        })
-
-                        // append dot to a container for all of them
-                        this.dots.appendChild(dot);
-                    }
-
-                    // add the container full of dots after selector
-                    this.selector.parentNode.insertBefore(this.dots, this.selector.nextSibling);
+                document.querySelector('.slider-content-inner').classList.remove('text-show');
+                setTimeout(function() {
+                    document.querySelector('.slider-content-inner').classList.add('text-show');
+                    document.querySelector('.slider-title').textContent = servSlider.innerElements[slideNumber].getAttribute('data-title');
+                    document.querySelector('.slider-descr').textContent = servSlider.innerElements[slideNumber].getAttribute('data-descr');
+                    document.querySelector('.slider-capture').textContent = servSlider.innerElements[slideNumber].getAttribute('data-capture');
+                }, 300);
+                let totalSlides = this.innerElements.length;
+                const slide = this.currentSlide;
+                if (slide <= 0) {
+                    document.querySelector('.current-slide').textContent = totalSlides + slide;
+                } else {
+                    document.querySelector('.current-slide').textContent = slide;
                 }
-
-                updateDots() {
-                    // loop through all dots
-                    for (let i = 0; i < this.dots.querySelectorAll('button').length; i++) {
-                        // if current dot matches currentSlide prop, add a class to it, remove otherwise
-                        const addOrRemove = this.currentSlide === i ? 'add' : 'remove';
-                        this.dots.querySelectorAll('button')[i].classList[addOrRemove]('dots__item--active');
-                    }
-                }
-                printSlideIndex() {
-                        const slideNumber = Math.abs(this.currentSlide);
-                        console.log(slideNumber)
-                        document.querySelector('.slider-title').textContent = this.innerElements[slideNumber].getAttribute('data-title');
-                        document.querySelector('.slider-descr').textContent = this.innerElements[slideNumber].getAttribute('data-descr');
-                        document.querySelector('.slider-content-inner').classList.remove('text-show');
-                        setTimeout(function() {
-                            document.querySelector('.slider-content-inner').classList.add('text-show');
-                        }, 300);
-                        document.querySelector('.current-slide').textContent = slideNumber + 1;
-                        document.querySelector('.total-slides').textContent = this.innerElements.length;
-                        console.log(this.innerElements.length);
+                document.querySelector('.total-slides').textContent = totalSlides;
 
 
-                    }
-                    // SlideIndex() {
-                    //     if (this.currentSlide == 0) {
-                    //         $('.slider-prev').addClass('hiden')
-                    //     } else {
-                    //         $('.slider-prev').removeClass('hiden')
-                    //     }
-                    //     if (this.innerElements.length < (this.currentSlide + this.perPage + 1)) {
-                    //         $('.slider-next').addClass('hiden')
-                    //     } else {
-                    //         $('.slider-next').removeClass('hiden')
-                    //     }
-                    // }
             }
-
-            var servSlider = new SiemaWithDots({
+            const servSlider = new Siema({
                 selector: '.case-slider',
                 duration: 400,
                 easing: 'ease-out',
@@ -148,16 +108,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     664: 2,
                     1024: 3,
                 },
-                onInit: function() {
-                    this.addDots();
-                    this.updateDots();
-                    this.printSlideIndex();
-                },
-                onChange: function() {
-                    this.updateDots();
-                    this.printSlideIndex();
-                }
+                onInit: printSlideIndex,
+                onChange: printSlideIndex,
             });
+
 
 
             document.querySelector('.next').addEventListener('click', function(e) {
@@ -175,80 +129,42 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
+    var header = document.querySelector(".hero"),
+        isScrolling = !1;
 
-    let priceSwap = document.querySelector('.price-swap');
-    let priceContainer = document.querySelector('.prices-wrapper')
+    function throttleScroll(e) {
+        0 == isScrolling && window.requestAnimationFrame(function() {
+                scrolling(e),
+                    isScrolling = !1
+            }),
+            isScrolling = !0,
+            document.querySelector(".hero").getBoundingClientRect().top < -100 && window.matchMedia("(min-width: 1024px)").matches ? header.classList.add("fixed") : header.classList.remove("blur-active")
+    }
+    window.addEventListener("scroll", throttleScroll, !1),
+        document.addEventListener("DOMContentLoaded", scrolling, !1);
+    var listItems = document.querySelectorAll(".animate");
 
-    priceSwap.addEventListener('input', function(e) {
-        if (this.checked) {
-            priceContainer.style.height = document.querySelector('.price-tables.active').offsetHeight + 'px';
-            setTimeout(function() {
-                document.querySelector('.price-tables.active').classList.remove('active');
-                document.querySelector('[data-plan=subscription]').classList.add('active');
-                priceContainer.style.height = document.querySelector('.price-tables.active').offsetHeight + 'px';
-
-            }, 10)
-        } else {
-
-            setTimeout(function() {
-                document.querySelector('.price-tables.active').classList.remove('active');
-                document.querySelector('[data-plan=one-off]').classList.add('active');
-                priceContainer.style.height = document.querySelector('[data-plan=one-off]').offsetHeight + 'px'
-            }, 10)
+    function scrolling(e) {
+        for (var t = 0; t < listItems.length; t++) {
+            var o = listItems[t];
+            isPartiallyVisible(o) && o.classList.add("animate-active")
         }
-    })
-    let contButtons = document.querySelectorAll('.country-btn')
-    contButtons.forEach(function(contButton) {
-        contButton.addEventListener('click', function() {
-            if (!this.classList.contains('active')) {
-                var nextCountry = document.querySelector('[data-from=' + this.getAttribute('data-to') + ']');
-                var curentCountry = document.querySelector('.country_info.active');
-                document.querySelector('.country-btn.active').classList.remove('active');
-                this.classList.add('active');
-                nextCountry.classList.add('active');
-                curentCountry.classList.remove('active');
-            }
-        })
-    })
+    }
 
-    let sprintSelectors = document.querySelectorAll('.sprint')
-    let sprintWrapper = document.querySelector('.tasks-wrapper')
-    sprintSelectors.forEach(function(sprintSelector) {
-        sprintSelector.addEventListener('click', function() {
-            if (!this.classList.contains('active')) {
-                sprintWrapper.style.height = presentActive + 'px';
-                var presentActive = document.querySelector('.sprint-tasks.active');
-                var newActive = document.querySelector('[data-sprint=sprint-' + this.getAttribute('sprint') + ']');
-                document.querySelector('.sprint.active').classList.remove('active')
-                this.classList.add('active')
-                setTimeout(function() {
-                    presentActive.classList.remove('active');
-                    newActive.classList.add('active');
-                    sprintWrapper.style.height = newActive.offsetHeight + 'px';
-                }, 10)
-            }
-        })
-    })
+    function isPartiallyVisible(e) {
+        var t = e.getBoundingClientRect(),
+            o = t.top,
+            n = t.bottom,
+            a = t.height;
+        return o + a >= 0 && a + window.innerHeight >= n
+    }
 
-    let priceTables = document.querySelectorAll('.price-table')
-    priceTables.forEach(function(priceTable) {
-        priceTable.addEventListener('mouseenter', function() {
-            document.querySelector('.active .pcs-3.price-selected').classList.remove('price-selected')
-            this.closest('.pcs-3').classList.add('price-selected')
-        })
-    })
-
-
-    let tabChats = document.querySelectorAll('[data-target]')
-    tabChats.forEach(function(tabChat) {
-        tabChat.addEventListener('click', function() {
-            document.querySelector('.chat-select.active').classList.remove('active')
-            document.querySelector('.select-tab.selected').classList.remove('selected')
-            this.classList.add('selected')
-            document.querySelector('[data-chat=' + this.getAttribute('data-target') + ']').classList.add('active')
-            document.querySelector('[data-indicator]').setAttribute('data-indicator', this.getAttribute('data-target'))
-        })
-    })
+    function isFullyVisible(e) {
+        var t = e.getBoundingClientRect(),
+            o = t.top,
+            n = t.bottom;
+        return o >= 0 && n <= window.innerHeight
+    }
 
 
 
