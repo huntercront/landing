@@ -71,20 +71,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             function printSlideIndex() {
                 const slideNumber = Math.abs(this.currentSlide);
-                console.log(this.currentSlide)
-                document.querySelector('.slider-title').textContent = this.innerElements[slideNumber].getAttribute('data-title');
-                document.querySelector('.slider-descr').textContent = this.innerElements[slideNumber].getAttribute('data-descr');
-                document.querySelector('.slider-capture').textContent = this.innerElements[slideNumber].getAttribute('data-capture');
-
+                var getText = slideNumber;
+                let totalSlides = this.innerElements.length;
+                const slide = this.currentSlide;
                 document.querySelector('.slider-content-inner').classList.remove('text-show');
                 setTimeout(function() {
                     document.querySelector('.slider-content-inner').classList.add('text-show');
-                    document.querySelector('.slider-title').textContent = servSlider.innerElements[slideNumber].getAttribute('data-title');
-                    document.querySelector('.slider-descr').textContent = servSlider.innerElements[slideNumber].getAttribute('data-descr');
-                    document.querySelector('.slider-capture').textContent = servSlider.innerElements[slideNumber].getAttribute('data-capture');
+
+
+                    getText = servSlider.innerElements[slideNumber].getAttribute('data-slide');
+
+                    console.log('Slide number= ' + servSlider.currentSlide + ',' + 'slider text = ' + getText);
+
+                    document.querySelector('.slider-title').textContent = servSlider.innerElements[getText].getAttribute('data-title');
+                    document.querySelector('.slider-descr').textContent = servSlider.innerElements[getText].getAttribute('data-descr');
+                    document.querySelector('.slider-capture').textContent = servSlider.innerElements[getText].getAttribute('data-capture');
                 }, 300);
-                let totalSlides = this.innerElements.length;
-                const slide = this.currentSlide;
+
                 if (slide <= 0) {
                     document.querySelector('.current-slide').textContent = totalSlides + slide;
                 } else {
@@ -129,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
+
     var header = document.querySelector(".hero"),
         isScrolling = !1;
 
@@ -163,11 +167,55 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var t = e.getBoundingClientRect(),
             o = t.top,
             n = t.bottom;
-        return o >= 0 && n <= window.innerHeight
+        return o >= 0 && n <= window.innerHeight;
     }
 
 
+    function contains(arr, elem) {
+        return arr.indexOf(elem) != -1;
+    }
 
+    let playGames = document.querySelectorAll('[data-stack]');
+    console.log(playGames);
+    const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
+    var curenttext = 0;
+    document.querySelector('.total-stack').textContent = luckCombo.length;
+
+    playGames.forEach(function(playGame) {
+        playGame.addEventListener('click', function() {
+            let curentNumber = parseInt(this.getAttribute('data-stack'));
+            let curentEl = this;
+
+
+
+            if (contains(luckCombo, curentNumber) == true) {
+                if (curentEl.classList.contains('selected')) {
+                    curenttext = curenttext - 1;
+                    document.querySelector('.curent-stack').textContent = parseInt(curenttext);
+                    curentEl.classList.remove('selected');
+                } else {
+                    curenttext = curenttext + 1;
+                    document.querySelector('.curent-stack').textContent = parseInt(curenttext);
+                    curentEl.classList.add('selected');
+                }
+            } else {
+                if (curentEl.classList.contains('selected')) {
+                    curentEl.classList.remove('selected');
+                } else {
+                    curentEl.classList.add('selected');
+                }
+            }
+
+
+
+
+
+            console.log(contains(luckCombo, curentNumber), curenttext, luckCombo.length)
+            if (curenttext == luckCombo.length) {
+                document.querySelector('.action').classList.add('action-complite')
+            }
+        })
+    })
 
 
     // var play = new autoPlayTabs();

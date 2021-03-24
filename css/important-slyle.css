@@ -6,7 +6,9 @@
     --gray-100: #666666;
     --gray-50: #ACB6C3;
     --gray-25: #F3F7FA;
+    --gray-bg: #F3F7FA;
     --blue: #004DFF;
+    --main: #A100FF;
     --font: 16px;
     -font-m: 14px;
 }
@@ -363,6 +365,10 @@ html {
     box-sizing: inherit;
 }
 
+* .no-margin {
+    margin: 0;
+}
+
 .row {
     display: -ms-flexbox;
     display: flex;
@@ -407,15 +413,6 @@ html {
         padding-right: 0;
         margin: 0 auto;
         max-width: 1440px;
-    }
-}
-
-@media (min-width:1680px) {
-    .container {
-        padding-left: 0;
-        padding-right: 0;
-        margin: 0 auto;
-        max-width: 1640px;
     }
 }
 
