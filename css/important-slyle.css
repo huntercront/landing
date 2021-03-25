@@ -471,6 +471,10 @@ html {
     padding-left: 8px;
 }
 
+.l-1 {
+    margin-left: 8.333333%;
+}
+
 .ms-1 {
     -ms-flex: 0 0 8.333333%;
     flex: 0 0 8.333333%;
