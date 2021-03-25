@@ -66,33 +66,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ],
         function() {
 
+            function printSlide() {
+                document.querySelector('[data-slide="1"]').classList.add('text-show')
 
+                let totalSlides = this.innerElements.length;
+                const slide = this.currentSlide;
+                let slideNumberCurent;
+
+                if (slide <= 0) {
+                    slideNumberCurent = totalSlides + slide;
+                } else {
+                    slideNumberCurent = slide;
+                }
+                document.querySelector('.current-slide').textContent = slideNumberCurent;
+                document.querySelector('.total-slides').textContent = totalSlides;
+            }
 
 
             function printSlideIndex() {
-                const slideNumber = Math.abs(this.currentSlide);
-                var getText = slideNumber;
                 let totalSlides = this.innerElements.length;
                 const slide = this.currentSlide;
-                document.querySelector('.slider-content-inner').classList.remove('text-show');
-                setTimeout(function() {
-                    document.querySelector('.slider-content-inner').classList.add('text-show');
-
-
-                    getText = servSlider.innerElements[slideNumber].getAttribute('data-slide');
-
-                    console.log('Slide number= ' + servSlider.currentSlide + ',' + 'slider text = ' + getText);
-
-                    document.querySelector('.slider-title').textContent = servSlider.innerElements[getText].getAttribute('data-title');
-                    document.querySelector('.slider-descr').textContent = servSlider.innerElements[getText].getAttribute('data-descr');
-                    document.querySelector('.slider-capture').textContent = servSlider.innerElements[getText].getAttribute('data-capture');
-                }, 300);
+                let slideNumberCurent;
 
                 if (slide <= 0) {
-                    document.querySelector('.current-slide').textContent = totalSlides + slide;
+                    slideNumberCurent = totalSlides + slide;
                 } else {
-                    document.querySelector('.current-slide').textContent = slide;
+                    slideNumberCurent = slide;
                 }
+                document.querySelector('.text-show').classList.remove('text-show')
+
+                setTimeout(function() {
+                    document.querySelector('[data-slide="' + slideNumberCurent + '"]').classList.add('text-show');
+                }, 300);
+
+                document.querySelector('.current-slide').textContent = slideNumberCurent;
                 document.querySelector('.total-slides').textContent = totalSlides;
 
 
@@ -111,18 +118,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     664: 2,
                     1024: 3,
                 },
-                onInit: printSlideIndex,
+                onInit: printSlide,
                 onChange: printSlideIndex,
             });
 
 
 
             document.querySelector('.next').addEventListener('click', function(e) {
-                servSlider.next()
+                servSlider.next();
+
             })
 
             document.querySelector('.prev').addEventListener('click', function(e) {
-                servSlider.prev()
+                servSlider.prev();
+
             })
 
 
