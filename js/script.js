@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         for (var t = 0; t < listItems.length; t++) {
             var o = listItems[t];
             if (o.getAttribute('data-anim')) {
-                isPartiallyVisible(o) && o.classList.add(o.getAttribute('data-anim'))
+                isFullyVisible(o) && o.classList.add(o.getAttribute('data-anim'))
             } else {
-                isPartiallyVisible(o) && o.classList.add("animate-active")
+                isFullyVisible(o) && o.classList.add("animate-active")
             }
 
         }
@@ -190,7 +190,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return arr.indexOf(elem) != -1;
     }
 
+    let playGames = document.querySelectorAll('[data-stack]');
+    console.log(playGames);
+    const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
+    var curenttext = 0;
+    document.querySelector('.total-stack').textContent = luckCombo.length;
 
+    playGames.forEach(function(playGame) {
+        playGame.addEventListener('click', function() {
+            let curentNumber = parseInt(this.getAttribute('data-stack'));
+            let curentEl = this;
+
+
+
+            if (contains(luckCombo, curentNumber) == true) {
+                if (curentEl.classList.contains('selected')) {
+                    curenttext = curenttext - 1;
+                    document.querySelector('.curent-stack').textContent = parseInt(curenttext);
+                    curentEl.classList.remove('selected');
+                } else {
+                    curenttext = curenttext + 1;
+                    document.querySelector('.curent-stack').textContent = parseInt(curenttext);
+                    curentEl.classList.add('selected');
+                }
+            } else {
+                if (curentEl.classList.contains('selected')) {
+                    curentEl.classList.remove('selected');
+                } else {
+                    curentEl.classList.add('selected');
+                }
+            }
+
+
+
+            if (curenttext == luckCombo.length) {
+                document.querySelector('.action').classList.add('action-complite')
+            }
+        })
+    })
 
 
     (function() {
