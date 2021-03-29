@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 loop: true,
                 rtl: false,
                 perPage: {
-                    664: 2,
+                    664: 1,
                     1024: 3,
                 },
                 onInit: printSlide,
@@ -135,6 +135,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
             })
 
 
+            const work = new Siema({
+                selector: '.work-slider',
+                duration: 400,
+                easing: 'ease-out',
+                startIndex: 0,
+                draggable: true,
+                multipleDrag: false,
+                threshold: 90,
+                loop: true,
+                rtl: false,
+                perPage: 1,
+
+            });
+
+            document.querySelector('.work-next').addEventListener('click', function(e) {
+                work.next();
+            })
+
+            document.querySelector('.work-prev').addEventListener('click', function(e) {
+                work.prev();
+            })
 
         });
 
@@ -191,7 +212,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     let playGames = document.querySelectorAll('[data-stack]');
-    console.log(playGames);
     const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
     var curenttext = 0;
     document.querySelector('.total-stack').textContent = luckCombo.length;
@@ -228,11 +248,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         })
     })
-
-
-    (function() {
-        scrollTo();
-    })();
+    let heroAnims = document.querySelectorAll('.stack-el');
+    heroAnims.forEach(function(heroAnim) {
+        heroAnim.classList.add(heroAnim.getAttribute('data-anim'));
+        heroAnim.style.animationDelay = heroAnim.getAttribute('data-delay') + 'ms';
+    })
 
     function scrollTo() {
         const links = document.querySelectorAll('[data-anchor]');
