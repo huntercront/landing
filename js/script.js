@@ -135,7 +135,53 @@ document.addEventListener("DOMContentLoaded", function(event) {
             })
 
 
-            const work = new Siema({
+            class SiemaWithDots extends Siema {
+
+                addDots() {
+                    // create a contnier for all dots
+                    // add a class 'dots' for styling reason
+                    this.dots = document.createElement('div');
+                    this.dots.classList.add('dots');
+
+                    // loop through slides to create a number of dots
+                    for (let i = 0; i < this.innerElements.length; i++) {
+                        // create a dot
+                        const dot = document.createElement('button');
+
+                        // add a class to dot
+                        dot.classList.add('dots__item');
+
+                        // add an event handler to each of them
+                        dot.addEventListener('click', () => {
+                            this.goTo(i);
+                        })
+
+                        // append dot to a container for all of them
+                        this.dots.appendChild(dot);
+                    }
+
+                    // add the container full of dots after selector
+                    this.selector.parentNode.insertBefore(this.dots, this.selector.nextSibling);
+                }
+
+                updateDots() {
+                    // loop through all dots
+                    for (let i = 0; i < this.dots.querySelectorAll('button').length; i++) {
+                        // if current dot matches currentSlide prop, add a class to it, remove otherwise
+                        const addOrRemove = this.currentSlide === i ? 'add' : 'remove';
+                        this.dots.querySelectorAll('button')[i].classList[addOrRemove]('dots__item--active');
+                    }
+
+                }
+                curentShowSlide() {
+                    return this.currentSlide;
+
+                }
+            }
+
+
+
+            var work = new SiemaWithDots({
                 selector: '.work-slider',
                 duration: 400,
                 easing: 'ease-out',
@@ -146,6 +192,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 loop: true,
                 rtl: false,
                 perPage: 1,
+                onInit: function() {
+                    this.addDots();
+                    this.updateDots();
+                },
+                onChange: function() {
+                    this.updateDots();
+                }
 
             });
 
@@ -211,6 +264,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return arr.indexOf(elem) != -1;
     }
 
+    function randomInteger(min, max) {
+        // получить случайное число от (min-0.5) до (max+0.5)
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rand);
+    }
+
     let playGames = document.querySelectorAll('[data-stack]');
     const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
     var curenttext = 0;
@@ -221,6 +280,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let curentNumber = parseInt(this.getAttribute('data-stack'));
             let curentEl = this;
 
+            playGames.forEach(function(playGame) {
+                playGame.style.order = randomInteger(0, playGames.length)
+                playGame.classList.add('random-anim')
+                setTimeout(function() {
+                    playGame.classList.remove('random-anim')
+                }, 200)
+            })
 
 
             if (contains(luckCombo, curentNumber) == true) {
@@ -240,14 +306,52 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     curentEl.classList.add('selected');
                 }
             }
-
-
-
             if (curenttext == luckCombo.length) {
                 document.querySelector('.action').classList.add('action-complite')
             }
+            let restartGame = document.querySelector('.action-overlay')
+            restartGame.addEventListener('click', function() {
+                playGames.forEach(function(playGame) {
+                    playGame.style.order = randomInteger(0, playGames.length)
+                    playGame.classList.remove('selected')
+                })
+                document.querySelector('.action').classList.remove('action-complite')
+                curenttext = 0;
+                document.querySelector('.curent-stack').textContent = parseInt(curenttext);
+            })
         })
     })
+
+
+    var countDownDate = new Date("Sep 5, 2021 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.querySelector(".time-tostart").innerHTML = days + ":" + hours + ":" +
+            minutes + ":" + seconds;
+
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+        }
+    }, 1000);
+
+
+
     let heroAnims = document.querySelectorAll('.stack-el');
     heroAnims.forEach(function(heroAnim) {
         heroAnim.classList.add(heroAnim.getAttribute('data-anim'));
