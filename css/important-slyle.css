@@ -19,6 +19,10 @@
     box-sizing: border-box
 }
 
+.animate {
+    visibility: hidden;
+}
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -1410,4 +1414,73 @@ html.wf-active body {
 
 .stack-el {
     padding: 0.75rem;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    box-shadow: 0 4px 12px -6px #c4c4c4;
+}
+
+.acn-logo {
+    fill: var(--main)
+}
+
+.acn-text {
+    fill: var(--black)
+}
+
+.header {
+    background: #fff;
+}
+
+.nav ul li a {
+    font-weight: 400;
+    color: var(--black);
+    font-size: 0.85rem;
+    line-height: 1;
+    display: block;
+    padding: 0.75rem;
+    max-width: 160px;
+    z-index: 10;
+}
+
+.nav ul li {
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.nav ul li span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: 20ms ease-in;
+    transition-property: width;
+    background: var(--gray-bg);
+    z-index: 1;
+}
+
+.nav ul {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    flex: 0 0 120px;
+    margin-right: 1rem;
+}
+
+.logo svg {
+    width: 100%;
 }

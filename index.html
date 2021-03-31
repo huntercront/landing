@@ -11,8 +11,39 @@
 </head>
 
 <body>
-    <header class="header" style="width: 100%; height: 100px;position: fixed;top: 0;left: 0;">
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="menu-container c-sb">
+                        <a href="#" class="logo">
+                            <svg width="150" height="41" viewBox="0 0 150 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M87.4282 11.1795L96.0629 7.93162L87.4282 4.51282V0L102.214 6.01709V9.77778L87.4282 15.8291V11.1795Z"
+																class="acn-logo" />
+															<path
+																d="M5.69449 40.0001C2.58533 40.0001 0 38.3932 0 34.8719V34.6838C0 30.359 3.70057 28.9573 8.17844 28.9573H10.3244V28.1197C10.3244 26.4103 9.56404 25.2992 7.7729 25.2992C7.4518 25.2664 7.12746 25.2998 6.81954 25.3976C6.51163 25.4954 6.22656 25.6555 5.98164 25.8681C5.73671 26.0807 5.53704 26.3414 5.39473 26.6344C5.25242 26.9275 5.17044 27.2467 5.15377 27.5727H0.523826C0.861778 23.6924 3.90335 21.7949 8.00946 21.7949C12.1156 21.7949 15.2078 23.5556 15.2078 27.9146V39.624H10.4258V37.6069C9.8982 38.3734 9.18807 38.9929 8.3611 39.4082C7.53412 39.8235 6.61699 40.0212 5.69449 39.983V40.0001ZM10.3244 33.7949V32.0855H8.4488C6.06624 32.0855 4.84961 32.7522 4.84961 34.3249V34.4958C4.84961 35.6924 5.57621 36.53 7.19838 36.53C7.58968 36.575 7.98597 36.5377 8.36232 36.4203C8.73868 36.303 9.08698 36.1082 9.38532 35.8481C9.68367 35.588 9.92561 35.2683 10.096 34.9091C10.2663 34.5499 10.3613 34.1589 10.3751 33.7608L10.3244 33.7949ZM26.1575 39.9488C21.3586 39.9488 17.8946 36.9402 17.8946 31.0086V30.7693C17.8946 24.8548 21.5951 21.7095 26.1913 21.7095C30.1284 21.7095 33.3728 23.7095 33.7614 28.2907H29.0808C28.7935 26.5813 27.9317 25.4873 26.242 25.4873C24.1805 25.4873 22.7611 27.1967 22.7611 30.6155V31.1454C22.7611 34.7009 24.0284 36.2736 26.2758 36.2736C27.0957 36.2484 27.8757 35.9099 28.4588 35.3263C29.0419 34.7427 29.3849 33.9574 29.4187 33.1283H33.7952C33.7556 34.0969 33.522 35.0473 33.1085 35.9219C32.6951 36.7965 32.1105 37.5771 31.39 38.2164C30.6696 38.8557 29.8284 39.3404 28.9174 39.6411C28.0063 39.9418 27.0444 40.0523 26.0899 39.9659L26.1575 39.9488ZM44.0858 39.9659C39.2869 39.9659 35.8229 36.9573 35.8229 31.0257V30.7693C35.8229 24.8548 39.5235 21.7095 44.1196 21.7095C48.0568 21.7095 51.3011 23.7095 51.7067 28.2907H47.0767C46.7895 26.5813 45.9277 25.4873 44.2379 25.4873C42.1933 25.4873 40.757 27.1967 40.757 30.6155V31.1454C40.757 34.7009 42.0243 36.2736 44.2717 36.2736C45.0916 36.2484 45.8716 35.9099 46.4547 35.3263C47.0379 34.7427 47.3809 33.9574 47.4147 33.1283H51.808C51.7684 34.0969 51.5348 35.0473 51.1214 35.9219C50.7079 36.7965 50.1233 37.5771 49.4029 38.2164C48.6825 38.8557 47.8413 39.3404 46.9302 39.6411C46.0192 39.9418 45.0572 40.0523 44.1027 39.9659H44.0858ZM62.2339 39.9659C57.2491 39.9659 53.7851 36.9573 53.7851 31.1283V30.7693C53.7851 24.9231 57.4011 21.7095 62.0311 21.7095C66.3231 21.7095 69.9392 24.1539 69.9392 29.9317V32.0514H58.7361C58.9388 35.1967 60.2568 36.3932 62.3352 36.3932C63.0373 36.4668 63.7423 36.2854 64.3243 35.8814C64.9063 35.4774 65.3273 34.8772 65.512 34.1881H69.9899C69.4491 37.5043 66.7793 40.0172 62.2339 40.0172V39.9659ZM65.3261 28.8719C65.2416 26.2907 64.0757 25.1796 62.1663 25.1796C60.6286 25.1796 59.243 26.0172 58.7868 28.8719H65.3261ZM72.9469 22.1368H77.729V24.7522C78.2339 23.8092 78.9919 23.0297 79.9157 22.5034C80.8395 21.9772 81.8914 21.7257 82.9503 21.7778C86.0933 21.7778 88.1886 23.6753 88.1886 27.9317V39.6411H83.4235V28.6496C83.4235 26.6155 82.5955 25.7095 80.8381 25.7095C80.4175 25.6843 79.9965 25.7525 79.6047 25.9093C79.2129 26.0661 78.8597 26.3077 78.57 26.6171C78.2802 26.9266 78.0608 27.2964 77.9272 27.7006C77.7936 28.1049 77.749 28.5338 77.7966 28.9573V39.624H72.9638L72.9469 22.1368ZM97.2795 16.8377V22.1197H100.659V25.7778H97.2795V34.0684C97.2795 35.3847 97.8709 35.983 98.9692 35.983C99.5476 36.001 100.123 35.8962 100.659 35.6753V39.4873C99.7745 39.7432 98.8584 39.8698 97.9385 39.8633C94.1703 39.8633 92.3792 38.1539 92.3792 34.5813V25.7778H90.4022V22.1197H92.413V18.8035L97.2795 16.8377ZM118.79 39.624H113.957V37.0599C113.49 37.9982 112.76 38.7769 111.859 39.2995C110.958 39.8222 109.925 40.0658 108.888 40.0001C105.779 40.0001 103.498 38.0855 103.498 33.9659V22.1197H108.364V33.2308C108.364 35.2479 109.159 36.1881 110.882 36.1881C111.302 36.2103 111.722 36.14 112.112 35.9822C112.502 35.8244 112.854 35.5828 113.144 35.274C113.433 34.9653 113.652 34.5967 113.787 34.1938C113.922 33.7909 113.968 33.3632 113.924 32.9402V22.1197H118.79V39.624ZM122.305 22.1197H127.121V25.3334C127.506 24.2706 128.221 23.3628 129.16 22.7464C130.098 22.1299 131.209 21.8381 132.325 21.9146V26.718C129.047 26.718 127.121 27.7266 127.121 30.6496V39.6411H122.305V22.1197ZM142.244 40.0001C137.175 40.0001 133.795 36.9915 133.795 31.1625V30.7693C133.795 24.9231 137.411 21.7095 142.024 21.7095C146.333 21.7095 149.949 24.1539 149.949 29.9317V32.0514H138.746C138.949 35.1967 140.267 36.3932 142.345 36.3932C143.047 36.4668 143.752 36.2854 144.334 35.8814C144.916 35.4774 145.337 34.8772 145.522 34.1881H150C149.459 37.5043 146.789 40.0172 142.244 40.0172V40.0001ZM138.864 28.8719H145.319C145.218 26.2907 144.052 25.1796 142.143 25.1796C140.622 25.1796 139.219 26.0172 138.763 28.8719"
+																class="acn-text" />
+														</svg>
+
+
+                        </a>
+                        <nav class="nav">
+                            <ul class="c-c">
+                                <li data-menu="1"><span></span><a href="#">О нас</a></li>
+                                <li data-menu="2"><span></span><a href="#">Присоединяйся к нашей дискуссии</a></li>
+                                <li data-menu="3"><span></span><a href="#">Собери наш стек полностью</a></li>
+                                <li data-menu="4"><span></span><a href="#">Конкурс по программированию</a></li>
+                                <li data-menu="5"><span></span><a href="#">Как мы работаем</a></li>
+                                <li data-menu="6"><span></span><a href="#">Узнай нас ближе</a></li>
+                                <li data-menu="7"><span></span><a href="#">Какие продукты мы делаем</a></li>
+                                <li data-menu="8"><span></span><a href="#">Вакансии</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </header>
     <main>
         <section class="hero">
@@ -68,7 +99,7 @@
         </section>
 
 
-        <section class="about-acn">
+        <section class="about-acn" data-block="1">
             <div class="container">
                 <div class="row c-c">
                     <div class="ms-12 txl-10">
@@ -84,7 +115,7 @@
             </div>
         </section>
 
-        <section class="join">
+        <section class="join" data-block="2">
             <div class="container">
                 <div class="row c-c">
                     <div class="ms-12 txl-10 ">
@@ -143,7 +174,7 @@
 
             </div>
         </section> -->
-        <section class="action no-margin ">
+        <section class="action no-margin " data-block="3">
             <div class="container ">
                 <h2 class="h2 centured">Собери наш стек полностью</h2>
                 <p class="sub-title centured">Получи уникальные электронные книги в качестве приза</p>
@@ -247,11 +278,11 @@
 
         </section>
 
-        <section class="programing">
-            <div class="programing-img animate" data-anim="left-rotate">
+        <section class="programing" data-block="4">
+            <div class="programing-img left-rotate">
                 <picture>
-                    <source type="image/png" srcset="./img/programing/programing-img.png, ./img/programing/programing-img@2x.png 2x">
-                    <img class="lazy" alt="Client service in live-chat" src="./img/programing/programing-img.png">
+                    <source type="image/png" data-srcset="./img/programing/programing-img.png, ./img/programing/programing-img@2x.png 2x">
+                    <img class="lazy" alt="Client service in live-chat" data-src="./img/programing/programing-img.png">
                 </picture>
             </div>
             <div class="container">
@@ -307,7 +338,7 @@
                 </div>
             </div>
         </section>
-        <section class="work">
+        <section class="work" data-block="5">
             <div class="container container-full">
                 <div class="row c-c">
                     <div class="ms-12 txl-10 ">
@@ -325,8 +356,8 @@
                                             <p class="work-slide-descr centured">Java / Spring / JPA, Typescript / NodeJS / NestJS, C# / ASP.NET, Python / Django</p>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-01.jpg, ./img/work/work-01@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-01.jpg">
+                                            <source type="image/jpg" data-srcset="./img/work/work-01.jpg, ./img/work/work-01@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-01.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -341,8 +372,8 @@
                                             </p>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-02.jpg, ./img/work/work-02@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-02.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-02.jpg, ./img/work/work-02@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-02.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -357,8 +388,8 @@
                                             </p>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-03.jpg, ./img/work/work-03@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-03.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-03.jpg, ./img/work/work-03@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-03.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -373,8 +404,8 @@
                                             </p>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-04.jpg, ./img/work/work-04@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-04.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-04.jpg, ./img/work/work-04@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-04.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -389,8 +420,8 @@
                                             </p>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-05.jpg, ./img/work/work-05@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-05.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-05.jpg, ./img/work/work-05@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-05.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -403,8 +434,8 @@
                                             </h4>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-06.jpg, ./img/work/work-06@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-06.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-06.jpg, ./img/work/work-06@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-06.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -417,8 +448,8 @@
                                             </h4>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-07.jpg, ./img/work/work-07@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-07.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-07.jpg, ./img/work/work-07@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-07.jpg">
                                         </picture>
                                     </div>
                                 </div>
@@ -433,18 +464,18 @@
                                             </p>
                                         </div>
                                         <picture>
-                                            <source type="image/jpg " srcset="./img/work/work-08.jpg, ./img/work/work-08@2x.jpg 2x ">
-                                            <img class="lazy" alt="Client service in live-chat" src="./img/work/work-08.jpg">
+                                            <source type="image/jpg " data-srcset="./img/work/work-08.jpg, ./img/work/work-08@2x.jpg 2x ">
+                                            <img class="lazy" alt="Client service in live-chat" data-src="./img/work/work-08.jpg">
                                         </picture>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="work-button work-prev">
-                                <img src="./img/work/arow-prev-big.svg" alt="">
+                                <img class="lazy" data-src="./img/work/arow-prev-big.svg" alt="">
                             </div>
                             <div class="work-button work-next">
-                                <img src="./img/work/arow-next-big.svg" alt="">
+                                <img class="lazy" data-src="./img/work/arow-next-big.svg" alt="">
                             </div>
                         </div>
                     </div>
@@ -453,7 +484,7 @@
 
         </section>
 
-        <section class="blog ">
+        <section class="blog " data-block="6">
             <div class="container ">
                 <h2 class="h2 centured ">Узнай нас ближе</h2>
                 <p class="sub-title centured ">Интресные кейсы от ведущих специалистов</p>
@@ -534,7 +565,7 @@
         </section>
 
 
-        <section class="case ">
+        <section class="case" data-block="7">
             <div class="container ">
                 <h2 class="h2 centured ">Какие продукты мы делаем</h2>
                 <p class="sub-title centured ">Мы работаем вместе по всему миру, чтобы изменить мир к лучшему.</p>
@@ -640,8 +671,45 @@
     </main>
 
 
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col c-c column">
+                    <div class="footer-content">
+                        <a href="#" class="footer-logo c-c">
+                            <img src="./img/acn-logo.svg" alt="">
+                        </a>
+                    </div>
+                    <p class="capture centured">Будь в курсе наших новостей</p>
+                    <div class="footer-social c-c">
+                        <a href="https://vk.com/tver_accenture">
+                            <img class="lazy" data-src="./img/vk.svg" alt="">
+                        </a>
+                        <a href="https://www.accenture.com/ru-ru">
+                            <img class="lazy" data-src="./img/web.svg" alt="">
+                        </a>
+                        <a href="#">
+                            <img class="lazy" data-src="./img/habr.svg" alt="">
+                        </a>
+                        <a href="#">
+                            <img class="lazy" data-src="./img/tube.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="footer-descr">
+                        <div class="footer-descr-img c-c">
+                            <picture>
+                                <source type="image/png" data-srcset="./img/footer/liner-logo.png, ./img/footer/liner-logo@2x.png 2x">
+                                <img class="lazy " alt="Client service in live-chat " data-src="./img/footer/liner-logo.png">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
+
 
 <script defer src="./js/script.js "></script>
 <script async src="./js/lazy-load.js "></script>

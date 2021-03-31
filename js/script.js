@@ -213,10 +213,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
 
 
+    function offset(el) {
+        var rect = el.getBoundingClientRect();
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return (rect.top - window.innerHeight / 3)
+    }
 
 
-
-    var header = document.querySelector(".hero"),
+    var header = document.querySelector(".header"),
         isScrolling = !1;
 
     function throttleScroll(e) {
@@ -232,6 +236,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var listItems = document.querySelectorAll(".animate");
 
 
+    let menuitems = document.querySelectorAll('[data-menu]');
+    let siteSections = document.querySelectorAll('[data-block]');
+
     function scrolling(e) {
         for (var t = 0; t < listItems.length; t++) {
             var o = listItems[t];
@@ -242,6 +249,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
         }
+        siteSections.forEach(function(siteSection) {
+            if (offset(siteSection) < 0 && Math.abs(offset(siteSection)) < siteSection.scrollHeight) {
+                document.querySelector('[data-menu="' + siteSection.getAttribute('data-block') + '"] span').style.width = Math.abs(offset(siteSection)) / siteSection.scrollHeight * 100 + '%'
+            }
+            if (offset(siteSection) > 0) {
+                document.querySelector('[data-menu="' + siteSection.getAttribute('data-block') + '"] span').style.width = '0%';
+            }
+            if (offset(siteSection) < 0 && Math.abs(offset(siteSection)) > siteSection.scrollHeight) {
+                document.querySelector('[data-menu="' + siteSection.getAttribute('data-block') + '"] span').style.width = '100%';
+            }
+
+        })
+
+
+
     }
 
     function isPartiallyVisible(e) {
@@ -325,26 +347,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var countDownDate = new Date("Sep 5, 2021 15:37:25").getTime();
 
-    // Update the count down every 1 second
     var x = setInterval(function() {
 
-        // Get todays date and time
         var now = new Date().getTime();
 
-        // Find the distance between now an the count down date
         var distance = countDownDate - now;
 
-        // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Output the result in an element with id="demo"
         document.querySelector(".time-tostart").innerHTML = days + ":" + hours + ":" +
             minutes + ":" + seconds;
 
-        // If the count down is over, write some text 
         if (distance < 0) {
             clearInterval(x);
         }
