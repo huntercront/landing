@@ -367,6 +367,82 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }, 1000);
 
 
+    var videoOpen = document.querySelector('.play-video a');
+    var modal = document.querySelector('.modal');
+    var closeModal = document.querySelector('.close-modal');
+    var mobileButton = document.querySelector('.ham')
+    var headerOverlay = document.querySelector('.heder-overlay');
+    var mobileMenu = document.querySelector('.header .nav-block')
+
+    function getScrollbarWidth() {
+        const outer = document.createElement('div');
+        outer.style.visibility = 'hidden';
+        outer.style.overflow = 'scroll';
+        outer.style.msOverflowStyle = 'scrollbar';
+        document.body.appendChild(outer);
+        const inner = document.createElement('div');
+        outer.appendChild(inner);
+        const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+        outer.parentNode.removeChild(outer);
+        return scrollbarWidth;
+    }
+
+    function hideModal() {
+        if (modal.classList.contains('visible')) {
+            modal.classList.remove('visible');
+
+
+            if (document.body.clientHeight > window.innerHeight) {
+                setTimeout(function() {
+                    modal.classList.remove('modal-will-active');
+                    document.body.style.overflow = 'auto';
+                    document.body.style.paddingRight = 0 + 'px';
+                    document.querySelector('.header').style.paddingRight = 0 + 'px';
+                }, 150)
+            }
+
+        }
+    }
+
+
+    videoOpen.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        document.querySelector('.header').style.paddingRight = getScrollbarWidth() + 'px';
+
+        if (!modal.classList.contains('modal-will-active')) {
+            modal.classList.add('modal-will-active')
+        }
+        setTimeout(function() {
+            modal.classList.add('visible');
+        }, 10);
+
+        if (document.body.clientHeight > window.innerHeight) {
+
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = getScrollbarWidth() + 'px';
+        }
+    })
+
+    modal.addEventListener('click', function(event) {
+        if (event.target !== event.currentTarget) return;
+        hideModal();
+    })
+
+    closeModal.addEventListener('click', function(e) {
+        hideModal();
+    })
+
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            hideModal();
+        }
+    };
+
+
+
+
 
     let heroAnims = document.querySelectorAll('.stack-el');
     heroAnims.forEach(function(heroAnim) {
