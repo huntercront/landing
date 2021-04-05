@@ -187,11 +187,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 easing: 'ease-out',
                 startIndex: 0,
                 draggable: true,
-                multipleDrag: false,
+                multipleDrag: true,
                 threshold: 90,
-                loop: true,
+                loop: false,
                 rtl: false,
-                perPage: 1,
+                perPage: {
+                    664: 1,
+                    1024: 3,
+                },
                 onInit: function() {
                     this.addDots();
                     this.updateDots();

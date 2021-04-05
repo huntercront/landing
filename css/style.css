@@ -706,6 +706,11 @@ section+section {
     background: #353541;
 }
 
+.work-slide {
+    position: relative;
+    margin: 0 0.5rem;
+}
+
 .work-slide-inner img {
     position: absolute;
     top: 0;
@@ -716,7 +721,7 @@ section+section {
     z-index: 1;
     object-fit: cover;
     object-position: center center;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 
 .dots {
@@ -726,6 +731,7 @@ section+section {
     z-index: 20;
     display: flex;
     justify-content: center;
+    display: none;
 }
 
 .dots__item {
@@ -758,18 +764,29 @@ section+section {
     flex-direction: column;
     position: relative;
     color: #fff;
-    padding: 4rem 6rem;
-    min-height: 20rem;
+    padding: 1rem;
+    min-height: 30rem;
+}
+
+.work .sliders-controls {
+    position: static;
+    transform: translate(0);
+    margin-top: 1rem;
 }
 
 .work-slide-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
+    white-space: normal;
 }
 
-.work-slide-title span.slide-number {
+.slide-number {
     font-weight: 300;
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .work-slider {
@@ -794,6 +811,7 @@ section+section {
 
 .work-slider-outer {
     position: relative;
+    margin: 0 -0.5rem;
 }
 
 .work-slider-outer:hover>.work-button {
@@ -812,10 +830,16 @@ section+section {
     right: 2rem;
 }
 
+@media screen and (max-width: 1024px) {
+    .dots {
+        display: flex;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .work-slide-text {
         padding: 8rem 1rem;
-        min-height: 25rem;
+        min-height: 32rem;
     }
     .work-slide-title {
         font-size: 1.5rem;
