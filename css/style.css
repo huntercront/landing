@@ -833,6 +833,7 @@ section+section {
 @media screen and (max-width: 1024px) {
     .dots {
         display: flex;
+        bottom: 5rem;
     }
 }
 

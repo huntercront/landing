@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="./css/font.css" as="style">
+    <link rel="preload" href="./css/important-slyle.css" as="style">
     <link rel="stylesheet" href="./css/important-slyle.css">
     <link rel="stylesheet" href="./css/style.css" media="print" async onload="this.media='all'">
     <noscript><link rel="./css/style.css" href="style.css"></noscript>
@@ -30,14 +31,15 @@
                         </a>
                         <nav class="nav">
                             <ul class="c-c">
-                                <li data-menu="1"><span></span><a href="#">О нас</a></li>
-                                <li data-menu="2"><span></span><a href="#">Присоединяйся к нашей дискуссии</a></li>
-                                <li data-menu="3"><span></span><a href="#">Собери наш стек полностью</a></li>
-                                <li data-menu="4"><span></span><a href="#">Конкурс по программированию</a></li>
-                                <li data-menu="5"><span></span><a href="#">Как мы работаем</a></li>
-                                <li data-menu="6"><span></span><a href="#">Узнай нас ближе</a></li>
-                                <li data-menu="7"><span></span><a href="#">Какие продукты мы делаем</a></li>
+                                <li data-menu="1"><span></span><a href="#about" data-anchor="true">О нас</a></li>
+                                <li data-menu="2"><span></span><a href="#join">Дискуссии</a></li>
+                                <li data-menu="3"><span></span><a href="#stack">Стэк</a></li>
+                                <li data-menu="4"><span></span><a href="#programming">Конкурс</a></li>
+                                <li data-menu="5"><span></span><a href="#work">Как мы работаем</a></li>
+                                <li data-menu="6"><span></span><a href="#blog">Узнай нас ближе</a></li>
+                                <li data-menu="7"><span></span><a href="#case">Продукты</a></li>
                                 <li data-menu="8"><span></span><a href="#">Вакансии</a></li>
+                                <li data-menu="9"><span></span><a href="#">Связаться</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -100,7 +102,7 @@
         </section>
 
 
-        <section class="about-acn" data-block="1">
+        <section class="about-acn" data-block="1" id="about">
             <div class="container">
                 <div class="row c-c">
                     <div class="ms-12 txl-10">
@@ -134,7 +136,7 @@
             </div>
         </section>
 
-        <section class="join" data-block="2">
+        <section class="join" data-block="2" id="join">
             <div class="container">
                 <div class="row c-c">
                     <div class="ms-12 txl-10 ">
@@ -170,30 +172,8 @@
             </div>
         </section>
 
-        <!-- <section class="about-us bg-gray no-margin">
-            <div class="container">
-                <div class="row c-c">
-                    <div class="ms-10 ">
 
-                        <div class="row c-c">
-                            <div class="ms-6">
-                                <span class="capture">Привет!</span>
-                                <h2 class="h2">Мы – команда Accenture Russia Часть глобальной команды Accenture c офисами в 120 странах мира.
-                                </h2>
-                                <p class="slider-descr font-light">В России мы работаем в Москве, Твери, Ростове-на-Дону и удаленно из разных регионов. Мы разрабатываем высоконагруженные системы со сложной бизнес-логикой, реализуем полный цикл разработки, любим учиться и отдыхать.</p>
-                            </div>
-                            <div class="ms-6">
-                                <div class="about-img c-c">
-                                    <img src="./img//about/Group 31.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section> -->
-        <section class="action no-margin " data-block="3">
+        <section class="action no-margin " data-block="3" id="stack">
             <div class="container ">
                 <h2 class="h2 centured">Собери наш стек полностью</h2>
                 <p class="sub-title centured">Получи уникальные электронные книги в качестве приза</p>
@@ -297,7 +277,7 @@
 
         </section>
 
-        <section class="programing" data-block="4">
+        <section class="programing" data-block="4" id="programming">
             <div class="programing-img left-rotate">
                 <picture>
                     <source type="image/png" data-srcset="./img/programing/programing-img.png, ./img/programing/programing-img@2x.png 2x">
@@ -357,7 +337,7 @@
                 </div>
             </div>
         </section>
-        <section class="work" data-block="5">
+        <section class="work" data-block="5" id="work">
             <div class="container container-full">
                 <div class="row c-c">
                     <div class="ms-12 txl-10 ">
@@ -491,8 +471,8 @@
                             </div>
                             <div class="sliders-controls ">
                                 <div class="slider-buttons c-c ">
-                                    <button class="c-c slide-button work-prev"><img src="./img/slider/prev.svg " alt=" "></button>
-                                    <button class="c-c slide-button work-next"><img src="./img/slider/next.svg " alt=" "></button>
+                                    <button class="c-c slide-button work-prev"><img class="lazy" src="./img/slider/prev.svg " alt=" "></button>
+                                    <button class="c-c slide-button work-next"><img class="lazy" src="./img/slider/next.svg " alt=" "></button>
                                 </div>
                             </div>
                         </div>
@@ -502,7 +482,7 @@
 
         </section>
 
-        <section class="blog " data-block="6">
+        <section class="blog " data-block="6" id="blog">
             <div class="container ">
                 <h2 class="h2 centured ">Узнай нас ближе</h2>
                 <p class="sub-title centured ">Интресные кейсы от ведущих специалистов</p>
@@ -583,7 +563,7 @@
         </section>
 
 
-        <section class="case" data-block="7">
+        <section class="case" data-block="7" id="case">
             <div class="container ">
                 <h2 class="h2 centured ">Какие продукты мы делаем</h2>
                 <p class="sub-title centured ">Мы работаем вместе по всему миру, чтобы изменить мир к лучшему.</p>
@@ -646,8 +626,8 @@
                         <div class="slider-content ">
                             <div class="sliders-controls ">
                                 <div class="slider-buttons c-c ">
-                                    <button class="c-c slide-button prev "><img src="./img/slider/prev.svg " alt=" "></button>
-                                    <button class="c-c slide-button next "><img src="./img/slider/next.svg " alt=" "></button>
+                                    <button class="c-c slide-button prev"><img class="lazy" src="./img/slider/prev.svg " alt=" "></button>
+                                    <button class="c-c slide-button next"><img class="lazy" src="./img/slider/next.svg " alt=" "></button>
                                 </div>
                                 <div class="number-slides ">
                                     <span class="current-slide "></span>/<span class="total-slides "></span>

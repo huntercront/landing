@@ -61,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var r = new Loader();
     r.require([
-            "./js/slider.js"
+            "./js/slider.js",
+            "./js/scroll.js"
 
         ],
         function() {
@@ -453,34 +454,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         heroAnim.style.animationDelay = heroAnim.getAttribute('data-delay') + 'ms';
     })
 
-    function scrollTo() {
-        const links = document.querySelectorAll('[data-anchor]');
-        links.forEach(each => (each.onclick = scrollAnchors));
-    }
-
-    function scrollAnchors(e, respond = null) {
-        // if (mobileButton.classList.contains('active')) {
-        //     document.body.style.overflow = 'auto';
-        //     document.body.style.paddingRight = '0px';
-        //     mobileButton.classList.remove('active');
-        //     headerOverlay.classList.remove('overlay-active')
-        //     mobileMenu.classList.remove('active');
-        // }
-        const distanceToTop = el => Math.floor(el.getBoundingClientRect().top);
-        e.preventDefault();
-        var targetID = (respond) ? respond.getAttribute('href') : this.getAttribute('href');
-        const targetAnchor = document.querySelector(targetID);
-        if (!targetAnchor) return;
-        const originalTop = (distanceToTop(targetAnchor)) - document.querySelector('header').offsetHeight;
-        window.scrollBy({ top: originalTop, left: 0, behavior: 'smooth' });
-        const checkIfDone = setInterval(function() {
-            const atBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
-            if (distanceToTop(targetAnchor) === 0 || atBottom) {
-                targetAnchor.tabIndex = '-1';
-                window.history.pushState('', '', targetID);
-                clearInterval(checkIfDone);
-            }
-        }, 100);
-    }
-
-});
+})
