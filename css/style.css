@@ -6,6 +6,12 @@
     color: var(--black);
 }
 
+.h5 {
+    color: var(--black);
+    font-size: 1.65rem;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 767px) {
     .h2 {
         font-size: 1.75rem;
@@ -1085,4 +1091,78 @@ section+section {
 
 .video-container video {
     width: 100%;
+}
+
+.vacancy-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 14%);
+}
+
+.vacancy-inner * {
+    margin: 0;
+}
+
+.vacancy-label {
+    font-weight: 600;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    background: #ED2024;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+.vacancy {
+    margin-bottom: 6rem;
+}
+
+.vacancy-button {
+    background: transparent;
+    border: 1px solid #004DFF;
+    border-radius: 2.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    position: relative;
+}
+
+.vacancy-button img {
+    width: 100%;
+    max-width: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ul.list-items {
+    list-style: none;
+    padding: 0;
+    margin-left: 1rem;
+}
+
+.vacancy-descr-all-inner {
+    margin-top: 2rem;
+}
+
+ul.list-items li {
+    position: relative;
+}
+
+ul.list-items li+li {
+    margin-top: 0.5rem;
+}
+
+ul.list-items li:before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    width: 0.5rem;
+    vertical-align: middle;
+    height: 0.5rem;
+    background: var(--main);
+    border-radius: 1rem;
+    top: 0.5rem;
 }
