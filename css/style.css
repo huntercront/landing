@@ -979,6 +979,10 @@ section+section {
     padding-bottom: 2rem;
 }
 
+.details .cta-more {
+    margin-top: 1rem;
+}
+
 @keyframes pulse {
     0% {
         opacity: 0;

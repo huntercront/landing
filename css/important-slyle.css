@@ -1344,7 +1344,7 @@ html.wf-active body {
 }
 
 .run:hover {
-    width: calc(5rem + 7ch);
+    width: calc(5rem + 9ch);
     color: #fff;
 }
 
@@ -1462,7 +1462,7 @@ html.wf-active body {
 .stack-descr {
     color: #fff;
     font-weight: 500;
-    margin-left: 0.5rem;
+    font-size: 1.2rem;
 }
 
 .stack-el {
