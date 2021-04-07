@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var l = new Loader();
     l.require([
-            "../js/typed.min.js"
+            "./js/typed.min.js"
 
         ],
         function() {
