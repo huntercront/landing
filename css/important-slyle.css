@@ -1259,6 +1259,12 @@ html {
     justify-content: flex-start;
 }
 
+.s-s {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
 .c-e {
     display: flex;
     align-items: center;
@@ -1319,6 +1325,39 @@ html.wf-active body {
     position: relative;
 }
 
+.run {
+    display: block;
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    z-index: 100;
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    border-radius: 4rem;
+    background: var(--brand);
+    transition: 200ms ease-in;
+    transition-property: padding width;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.run:hover {
+    width: calc(5rem + 7ch);
+    color: #fff;
+}
+
+.run-icon {
+    width: 4rem;
+    height: 4rem;
+    flex: 0 0 4rem;
+}
+
+.run-icon svg {
+    width: 100%;
+}
+
 .h1 {
     font-size: 4rem;
     line-height: 0.9;
@@ -1352,7 +1391,7 @@ html.wf-active body {
     width: 3px;
     height: 40px;
     background: #fff;
-    bottom: -128px;
+    bottom: -52px;
     left: 50%;
     border-radius: 4px;
 }
@@ -1364,7 +1403,7 @@ html.wf-active body {
     height: 12px;
     border-radius: 100%;
     background: #fff;
-    bottom: -128px;
+    bottom: -52px;
     margin-left: -4px;
     left: 50%;
     animation: glade 2s infinite;
@@ -1392,7 +1431,6 @@ html.wf-active body {
 .hero {
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
 }
 
 .hero-bg {
@@ -1409,7 +1447,6 @@ html.wf-active body {
 
 .hero-content {
     height: 100%;
-    min-height: calc(100vh - 10rem);
     padding: 5rem 0;
 }
 
@@ -1432,15 +1469,6 @@ html.wf-active body {
     padding: 0.75rem;
 }
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 200;
-    box-shadow: 0 4px 12px -6px #c4c4c4;
-}
-
 .acn-logo {
     fill: var(--main)
 }
@@ -1451,6 +1479,7 @@ html.wf-active body {
 
 .header {
     background: #fff;
+    padding: 0.5rem 0rem;
 }
 
 .nav ul li a {

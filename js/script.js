@@ -42,22 +42,38 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    // var l = new Loader();
-    // l.require([
-    //         "../js/typed.min.js"
+    var l = new Loader();
+    l.require([
+            "../js/typed.min.js"
 
-    //     ],
-    //     function() {
+        ],
+        function() {
 
-    //         var typed = new Typed('.print-text', {
-    //             strings: ["digital marketing campaigns", "mobile shopping", "Facebook shopping", "Instagram shopping", "ads campaigns", "e-mail campaigns", "Office365 sync", "CRM integration", "ERP integration"],
-    //             typeSpeed: 70,
-    //             backSpeed: 50,
-    //             loop: true,
-    //             backDelay: 1500
-    //         });
+            var entityMap = {
+                '"': '&quot;',
+                "'": '&#39;',
+            };
 
-    //     });
+            function escapeHtml(string) {
+                return String(string).replace(/["']/g, function(s) {
+                    return entityMap[s];
+                });
+            }
+
+            let tab = '&nbsp;&nbsp;';
+            let printText = ['<span class="opmin">//Hello World на C</span><br>' + '#include <stdio.h><br>int main(){<br> printf("Hello, World!");<br> return 0;<br>}', '<span class="opmin">//Hello World на Java</span><br>' + 'class HelloWorld {<br>' + tab + tab + 'public static void main(String[] args) {<br>' + tab + tab + 'System.out.println("Hello, World!");<br>' + tab + '}<br>}', '<span class="opmin">//Hello World на Swift</span><br>' + 'import Swift<br>print("Hello, World!")']
+
+            var typed = new Typed('.print-text', {
+                strings: printText,
+                typeSpeed: 80,
+                backSpeed: 50,
+                loop: true,
+                contentType: 'html',
+                backDelay: 1500
+
+            });
+
+        });
 
     var r = new Loader();
     r.require([
@@ -232,16 +248,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 scrolling(e),
                     isScrolling = !1
             }),
-            isScrolling = !0,
-            document.querySelector(".hero").getBoundingClientRect().top < -100 && window.matchMedia("(min-width: 1024px)").matches ? header.classList.add("fixed") : header.classList.remove("blur-active")
+            isScrolling = !0
+
     }
     window.addEventListener("scroll", throttleScroll, !1),
         document.addEventListener("DOMContentLoaded", scrolling, !1);
     var listItems = document.querySelectorAll(".animate");
 
-
-    let menuitems = document.querySelectorAll('[data-menu]');
-    let siteSections = document.querySelectorAll('[data-block]');
 
     function scrolling(e) {
         for (var t = 0; t < listItems.length; t++) {
@@ -253,18 +266,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
         }
-        siteSections.forEach(function(siteSection) {
-            if (offset(siteSection) < 0 && Math.abs(offset(siteSection)) < siteSection.scrollHeight) {
-                document.querySelector('[data-menu="' + siteSection.getAttribute('data-block') + '"] span').style.width = Math.abs(offset(siteSection)) / siteSection.scrollHeight * 100 + '%'
-            }
-            if (offset(siteSection) > 0) {
-                document.querySelector('[data-menu="' + siteSection.getAttribute('data-block') + '"] span').style.width = '0%';
-            }
-            if (offset(siteSection) < 0 && Math.abs(offset(siteSection)) > siteSection.scrollHeight) {
-                document.querySelector('[data-menu="' + siteSection.getAttribute('data-block') + '"] span').style.width = '100%';
-            }
-
-        })
 
 
 
@@ -349,34 +350,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
 
 
-    var countDownDate = new Date("Sep 5, 2021 15:37:25").getTime();
-
-    var x = setInterval(function() {
-
-        var now = new Date().getTime();
-
-        var distance = countDownDate - now;
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.querySelector(".time-tostart").innerHTML = days + ":" + hours + ":" +
-            minutes + ":" + seconds;
-
-        if (distance < 0) {
-            clearInterval(x);
-        }
-    }, 1000);
 
 
-    var videoOpen = document.querySelector('.play-video a');
+
+    var videoOpen = document.querySelector('.about-video');
     var modal = document.querySelector('.modal');
     var closeModal = document.querySelector('.close-modal');
-    var mobileButton = document.querySelector('.ham')
-    var headerOverlay = document.querySelector('.heder-overlay');
-    var mobileMenu = document.querySelector('.header .nav-block')
 
     function getScrollbarWidth() {
         const outer = document.createElement('div');
@@ -395,13 +374,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (modal.classList.contains('visible')) {
             modal.classList.remove('visible');
 
+            if (modal.querySelector('video')) {
+                modal.querySelector('video').pause();
+            }
 
             if (document.body.clientHeight > window.innerHeight) {
                 setTimeout(function() {
                     modal.classList.remove('modal-will-active');
                     document.body.style.overflow = 'auto';
                     document.body.style.paddingRight = 0 + 'px';
-                    document.querySelector('.header').style.paddingRight = 0 + 'px';
                 }, 150)
             }
 
@@ -411,9 +392,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     videoOpen.addEventListener('click', function(e) {
         e.preventDefault();
-
-        document.querySelector('.header').style.paddingRight = getScrollbarWidth() + 'px';
-
         if (!modal.classList.contains('modal-will-active')) {
             modal.classList.add('modal-will-active')
         }
@@ -421,8 +399,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             modal.classList.add('visible');
         }, 10);
 
-        if (document.body.clientHeight > window.innerHeight) {
 
+        if (document.body.clientHeight > window.innerHeight) {
             document.body.style.overflow = 'hidden';
             document.body.style.paddingRight = getScrollbarWidth() + 'px';
         }
@@ -452,6 +430,81 @@ document.addEventListener("DOMContentLoaded", function(event) {
     heroAnims.forEach(function(heroAnim) {
         heroAnim.classList.add(heroAnim.getAttribute('data-anim'));
         heroAnim.style.animationDelay = heroAnim.getAttribute('data-delay') + 'ms';
+    })
+
+
+
+    let slideUp = (target, duration = 500) => {
+        target.style.transitionProperty = 'height, margin, padding';
+        target.style.transitionDuration = duration + 'ms';
+        target.style.boxSizing = 'border-box';
+        target.style.height = target.offsetHeight + 'px';
+        target.offsetHeight;
+        target.style.overflow = 'hidden';
+        target.style.height = 0;
+        target.style.paddingTop = 0;
+        target.style.paddingBottom = 0;
+        target.style.marginTop = 0;
+        target.style.marginBottom = 0;
+        window.setTimeout(() => {
+            target.style.display = 'none';
+            target.style.removeProperty('height');
+            target.style.removeProperty('padding-top');
+            target.style.removeProperty('padding-bottom');
+            target.style.removeProperty('margin-top');
+            target.style.removeProperty('margin-bottom');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            //alert("!");
+        }, duration);
+    }
+
+    let slideDown = (target, duration = 500) => {
+        target.style.removeProperty('display');
+        let display = window.getComputedStyle(target).display;
+
+        if (display === 'none')
+            display = 'block';
+
+        target.style.display = display;
+        let height = target.offsetHeight;
+        target.style.overflow = 'hidden';
+        target.style.height = 0;
+        target.style.paddingTop = 0;
+        target.style.paddingBottom = 0;
+        target.style.marginTop = 0;
+        target.style.marginBottom = 0;
+        target.offsetHeight;
+        target.style.boxSizing = 'border-box';
+        target.style.transitionProperty = "height, margin, padding";
+        target.style.transitionDuration = duration + 'ms';
+        target.style.height = height + 'px';
+        target.style.removeProperty('padding-top');
+        target.style.removeProperty('padding-bottom');
+        target.style.removeProperty('margin-top');
+        target.style.removeProperty('margin-bottom');
+        window.setTimeout(() => {
+            target.style.removeProperty('height');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+        }, duration);
+    }
+    var slideToggle = (target, duration = 500) => {
+        if (window.getComputedStyle(target).display === 'none') {
+            return slideDown(target, duration);
+        } else {
+            return slideUp(target, duration);
+        }
+    }
+
+    let vacancys = document.querySelectorAll('.vacancy-descr')
+    vacancys.forEach(function(vacancy) {
+        vacancy.addEventListener('click', function() {
+            slideToggle(vacancy.closest('.vacancy-block').querySelector('.vacancy-descr-all'), 700)
+            this.classList.toggle('descr-all-visible')
+        })
     })
 
 })
