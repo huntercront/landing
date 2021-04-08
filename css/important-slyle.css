@@ -1328,7 +1328,7 @@ html.wf-active body {
 .run {
     display: block;
     position: fixed;
-    right: 3rem;
+    left: 3rem;
     bottom: 3rem;
     z-index: 100;
     width: 4rem;
@@ -1373,8 +1373,8 @@ html.wf-active body {
 
 .video-saund,
 .video-zoom {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: transparent;
     border: none;
     outline: none;
@@ -1390,9 +1390,6 @@ html.wf-active body {
 
 .video-controls {
     margin-top: 2rem;
-    position: absolute;
-    bottom: -4rem;
-    right: 0;
 }
 
 .video-controls button:focus {
@@ -1438,7 +1435,7 @@ html.wf-active body {
 
 @media screen and (max-width: 464px) {
     .h1 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 }
 
@@ -1516,7 +1513,12 @@ html.wf-active body {
 }
 
 .hero-inner {
-    padding: 10% 10px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: center;
+    padding: 6rem 0;
 }
 
 .hero-stack {
@@ -1593,8 +1595,8 @@ html.wf-active body {
 }
 
 .logo {
-    flex: 0 0 120px;
     margin-right: 1rem;
+    max-width: 120px;
 }
 
 .logo svg {
