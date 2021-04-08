@@ -30,6 +30,41 @@
     margin-bottom: 1rem;
 }
 
+.about-us {
+    padding-top: 4rem;
+}
+
+.about-img img {
+    width: 100%;
+    max-width: 500px;
+}
+
+.about-acn {
+    padding-bottom: 5rem;
+}
+
+.about-acn .h2 {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.about-acn .slider-descr {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.about-acn .blog-title {
+    max-width: 620px;
+    margin: auto;
+}
+
+.about-us .h2 {
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
 .play-video {
     margin-top: 2rem;
 }
@@ -961,6 +996,8 @@ section+section {
     position: relative;
     overflow: hidden;
     padding-bottom: 4rem;
+    margin: 0;
+    padding-top: 8rem;
 }
 
 .programing .h2 {

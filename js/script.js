@@ -13,6 +13,27 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })(document);
 
+let video = document.querySelector('.hero-bg video');
+document.querySelector('.video-saund').addEventListener('click', function(e) {
+    if (this.classList.contains('sound')) {
+        video.muted = true;
+        this.classList.toggle('sound')
+    } else {
+        video.muted = false;
+        this.classList.toggle('sound')
+    }
+})
+document.querySelector('.video-zoom').addEventListener('click', function(e) {
+
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) { /* Safari */
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE11 */
+        video.msRequestFullscreen();
+    }
+})
+
 document.addEventListener("DOMContentLoaded", function(event) {
     var Loader = function() {}
     Loader.prototype = {
@@ -388,40 +409,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         }
     }
+    if (videoOpen) {
+
+        videoOpen.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (!modal.classList.contains('modal-will-active')) {
+                modal.classList.add('modal-will-active')
+            }
+            setTimeout(function() {
+                modal.classList.add('visible');
+            }, 10);
 
 
-    videoOpen.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (!modal.classList.contains('modal-will-active')) {
-            modal.classList.add('modal-will-active')
-        }
-        setTimeout(function() {
-            modal.classList.add('visible');
-        }, 10);
+            if (document.body.clientHeight > window.innerHeight) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.paddingRight = getScrollbarWidth() + 'px';
+            }
+        })
 
-
-        if (document.body.clientHeight > window.innerHeight) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = getScrollbarWidth() + 'px';
-        }
-    })
-
-    modal.addEventListener('click', function(event) {
-        if (event.target !== event.currentTarget) return;
-        hideModal();
-    })
-
-    closeModal.addEventListener('click', function(e) {
-        hideModal();
-    })
-
-    document.onkeydown = function(evt) {
-        evt = evt || window.event;
-        if (evt.keyCode == 27) {
+        modal.addEventListener('click', function(event) {
+            if (event.target !== event.currentTarget) return;
             hideModal();
-        }
-    };
+        })
 
+        closeModal.addEventListener('click', function(e) {
+            hideModal();
+        })
+
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                hideModal();
+            }
+        };
+    }
 
 
 

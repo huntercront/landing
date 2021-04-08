@@ -1359,18 +1359,75 @@ html.wf-active body {
 }
 
 .h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 0.9;
 }
 
 .hero .h1 {
-    text-transform: uppercase;
-    text-align: center;
     max-width: 1200px;
     color: #fff;
     position: relative;
     max-width: 672px;
     margin: 0;
+}
+
+.video-saund,
+.video-zoom {
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+    position: relative;
+}
+
+.video-zoom:hover,
+.video-zoom:hover {
+    opacity: 0.7;
+}
+
+.video-controls {
+    margin-top: 2rem;
+    position: absolute;
+    bottom: -4rem;
+    right: 0;
+}
+
+.video-controls button:focus {
+    outline: none;
+}
+
+.off-sound,
+.on-sound {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.on-sound {
+    opacity: 1;
+}
+
+.sound .off-sound {
+    opacity: 1;
+}
+
+.sound .on-sound {
+    opacity: 0;
+}
+
+.video-saund {
+    margin-right: 1rem;
+}
+
+.video-saund img,
+.video-zoom img {
+    width: 100%;
 }
 
 @media screen and (max-width: 767px) {
@@ -1392,8 +1449,15 @@ html.wf-active body {
     height: 40px;
     background: #fff;
     bottom: -52px;
-    left: 50%;
+    left: 5px;
     border-radius: 4px;
+}
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .hero .h1:after {
@@ -1405,7 +1469,7 @@ html.wf-active body {
     background: #fff;
     bottom: -52px;
     margin-left: -4px;
-    left: 50%;
+    left: 5px;
     animation: glade 2s infinite;
 }
 
@@ -1431,6 +1495,7 @@ html.wf-active body {
 .hero {
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 .hero-bg {
@@ -1450,13 +1515,19 @@ html.wf-active body {
     padding: 5rem 0;
 }
 
+.hero-inner {
+    padding: 10% 10px;
+}
+
 .hero-stack {
     display: inline-flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    margin: 0 -0.5rem;
+    max-width: 500px;
 }
 
 .stack-descr {
@@ -1466,7 +1537,7 @@ html.wf-active body {
 }
 
 .stack-el {
-    padding: 0.75rem;
+    padding: 0.5rem;
 }
 
 .acn-logo {
