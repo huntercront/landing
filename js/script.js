@@ -34,7 +34,12 @@ document.querySelector('.video-zoom').addEventListener('click', function(e) {
     }
 })
 
+
 document.addEventListener("DOMContentLoaded", function(event) {
+
+
+
+
     var Loader = function() {}
     Loader.prototype = {
         require: function(scripts, callback) {
