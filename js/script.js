@@ -37,9 +37,6 @@ document.querySelector('.video-zoom').addEventListener('click', function(e) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-
-
-
     var Loader = function() {}
     Loader.prototype = {
         require: function(scripts, callback) {
@@ -108,74 +105,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         ],
         function() {
-
-            function printSlide() {
-                document.querySelector('[data-slide="1"]').classList.add('text-show')
-
-                let totalSlides = this.innerElements.length;
-                const slide = this.currentSlide;
-                let slideNumberCurent;
-
-                if (slide <= 0) {
-                    slideNumberCurent = totalSlides + slide;
-                } else {
-                    slideNumberCurent = slide;
-                }
-                document.querySelector('.current-slide').textContent = slideNumberCurent;
-                document.querySelector('.total-slides').textContent = totalSlides;
-            }
-
-
-            function printSlideIndex() {
-                let totalSlides = this.innerElements.length;
-                const slide = this.currentSlide;
-                let slideNumberCurent;
-
-                if (slide <= 0) {
-                    slideNumberCurent = totalSlides + slide;
-                } else {
-                    slideNumberCurent = slide;
-                }
-                document.querySelector('.text-show').classList.remove('text-show')
-
-                setTimeout(function() {
-                    document.querySelector('[data-slide="' + slideNumberCurent + '"]').classList.add('text-show');
-                }, 300);
-
-                document.querySelector('.current-slide').textContent = slideNumberCurent;
-                document.querySelector('.total-slides').textContent = totalSlides;
-
-
-            }
-            const servSlider = new Siema({
-                selector: '.case-slider',
-                duration: 400,
-                easing: 'ease-out',
-                startIndex: 1,
-                draggable: false,
-                multipleDrag: false,
-                threshold: 90,
-                loop: true,
-                rtl: false,
-                perPage: {
-                    664: 1,
-                    1024: 3,
-                },
-                onInit: printSlide,
-                onChange: printSlideIndex,
-            });
-
-
-
-            document.querySelector('.next').addEventListener('click', function(e) {
-                servSlider.next();
-
-            })
-
-            document.querySelector('.prev').addEventListener('click', function(e) {
-                servSlider.prev();
-
-            })
 
 
             class SiemaWithDots extends Siema {
@@ -317,11 +246,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return arr.indexOf(elem) != -1;
     }
 
-    function randomInteger(min, max) {
-        // получить случайное число от (min-0.5) до (max+0.5)
-        let rand = min - 0.5 + Math.random() * (max - min + 1);
-        return Math.round(rand);
-    }
+    // function randomInteger(min, max) {
+    //     let rand = min - 0.5 + Math.random() * (max - min + 1);
+    //     return Math.round(rand);
+    // }
 
     let playGames = document.querySelectorAll('[data-stack]');
     const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
@@ -334,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let curentEl = this;
 
             playGames.forEach(function(playGame) {
-                playGame.style.order = randomInteger(0, playGames.length)
+                // playGame.style.order = randomInteger(0, playGames.length)
                 playGame.classList.add('random-anim')
                 setTimeout(function() {
                     playGame.classList.remove('random-anim')

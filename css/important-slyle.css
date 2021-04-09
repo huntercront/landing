@@ -1383,6 +1383,11 @@ html.wf-active body {
     position: relative;
 }
 
+.video-saund {
+    width: 2rem;
+    height: 2rem;
+}
+
 .video-zoom:hover,
 .video-zoom:hover {
     opacity: 0.7;
@@ -1429,22 +1434,38 @@ html.wf-active body {
 
 @media screen and (max-width: 767px) {
     .h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 }
 
 @media screen and (max-width: 464px) {
     .h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 }
 
-.hero .h1:before {
+.hero-round {
+    width: 100%;
+    height: 5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 10;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 100%;
+}
+
+.inner-action span {
+    position: relative;
+}
+
+.inner-action span:before {
     content: '';
     position: absolute;
     width: 3px;
-    height: 40px;
-    background: #fff;
+    height: 30px;
+    background: var(--main);
     bottom: -52px;
     left: 5px;
     border-radius: 4px;
@@ -1457,13 +1478,13 @@ html.wf-active body {
     background: rgba(0, 0, 0, 0.4);
 }
 
-.hero .h1:after {
+.inner-action span:after {
     content: '';
     position: absolute;
     width: 12px;
     height: 12px;
     border-radius: 100%;
-    background: #fff;
+    background: var(--main);
     bottom: -52px;
     margin-left: -4px;
     left: 5px;
@@ -1481,18 +1502,18 @@ html.wf-active body {
     }
     90% {
         opacity: 1;
-        transform: translate(0, -35px);
+        transform: translate(0, -25px);
     }
     100% {
         opacity: 0;
-        transform: translate(0, -40px);
+        transform: translate(0, -30px);
     }
 }
 
 .hero {
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 .hero-bg {
@@ -1509,16 +1530,17 @@ html.wf-active body {
 
 .hero-content {
     height: 100%;
-    padding: 5rem 0;
+    padding: 2rem 0rem 1rem 0rem;
 }
 
 .hero-inner {
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
     justify-content: center;
-    padding: 6rem 0;
+    padding: 3rem 0;
+    padding-bottom: 5rem;
 }
 
 .hero-stack {

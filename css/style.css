@@ -99,6 +99,10 @@
         margin-top: 2rem;
     }
     
+    .legacy-box .h2 {
+        font-size: 2rem;
+    }
+    
     .join {
         margin-bottom: 6rem;
     }
@@ -111,6 +115,14 @@
     .about-acn .slider-descr {
         max-width: 500px;
         margin-top: 2rem;
+    }
+    
+    .blog {
+        padding-top: 8rem;
+    }
+    
+    .blog .h2 {
+        margin-bottom: 2.5rem;
     }
     
     .about-acn .blog-title {
@@ -183,6 +195,10 @@
         font-weight: 600;
     }
     
+    .speaker-role {
+        line-height: 1.2;
+    }
+    
     .speak-about {
         line-height: 1.2;
     }
@@ -190,6 +206,7 @@
     .speaker-photo {
         width: 4rem;
         height: 4rem;
+        flex: 0 0 4rem;
         border-radius: 4rem;
         overflow: hidden;
         margin-right: 1rem;
@@ -199,11 +216,9 @@
         width: 100%;
     }
     
-    .speaker-role {}
-    
     @media screen and (max-width: 767px) {
         .legacy-box {
-            padding: 1rem 3rem;
+            padding: 1rem 1rem 2rem 1rem;
         }
     }
     
@@ -222,6 +237,37 @@
         }
         .legacy-box .h2 {
             margin-top: 0;
+            text-align: left;
+            font-size: 1.3rem;
+        }
+        .legacy-box .h4 {
+            text-align: left;
+        }
+        .legacy-box .speak-about {
+            text-align: left;
+        }
+        .legacy-box {
+            padding: 3rem 1.25rem;
+        }
+        .legacy-info {
+            justify-content: flex-start;
+        }
+        .speaker-info {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .speaker-photo {
+            flex: 0 0 3rem;
+            height: 3rem;
+            margin-right: 0.5rem;
+        }
+        .speaker-name {
+            font-size: 1.1rem;
+        }
+        .speaker-role {
+            font-size: 0.9rem;
         }
     }
     
@@ -264,7 +310,7 @@
         font-weight: 300;
         color: var(--gray-100);
         font-size: 1.25rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
     
     @media screen and (max-width: 767px) {
@@ -307,6 +353,7 @@
     
     .blog-img video {
         width: 100%;
+        height: 100%;
     }
     
     .yotube-logo {
@@ -396,6 +443,7 @@
     
     .cursor-watch {
         cursor: url('../img/blog/cursor-watch.png'), url('../img/blog/cursor-watch.png'), move;
+        display: block;
     }
     
     .cursor-read {
@@ -414,12 +462,20 @@
         align-items: flex-start;
         justify-content: center;
         flex-direction: column;
-        height: 100%;
         padding: 2rem;
     }
     
     .blog-descr .common-text {
         margin-bottom: 2.5rem;
+    }
+    
+    @media(max-width:768px) {
+        .or-2 {
+            order: 1;
+        }
+        .or-1 {
+            order: 0;
+        }
     }
     
     @media(max-width:768px) {
@@ -471,24 +527,6 @@
         left: 22px;
     }
     
-    .case-slider {
-        width: 100%;
-    }
-    
-    .case {
-        overflow: hidden;
-    }
-    
-    .case-slide {
-        transition: 200ms ease-in;
-        transition-property: transform;
-        perspective: 1000px;
-    }
-    
-    .case-slider img {
-        width: 100%;
-    }
-    
     .slider-content {
         min-height: 16rem;
         position: relative;
@@ -510,10 +548,6 @@
         visibility: visible;
         opacity: 1;
         transform: translate(0, 0);
-    }
-    
-    .case-slide {
-        margin: 0 0.5rem;
     }
     
     .slide-button {
@@ -619,27 +653,51 @@
     
     .action-block {
         display: inline-flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
-        justify-content: center;
-        width: 100%;
+        justify-content: flex-start;
+        animation: left-right 20s linear infinite;
+    }
+    
+    @keyframes left-right {
+        0% {
+            transform: translate(0%);
+        }
+        100% {
+            transform: translate(-50%);
+        }
+    }
+    
+    @keyframes right-left {
+        0% {
+            transform: translate(-100%);
+        }
+        100% {
+            transform: translate(100%);
+        }
+    }
+    
+    .action-block.rewersed {
+        flex-direction: row-reverse;
+        animation: right-left 40s linear infinite;
     }
     
     .action-stack {
         padding: 0.5rem 1rem;
         background: #fff;
         border-radius: 3px;
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
         border: 2px solid transparent;
         transition: 150ms ease-in;
         transition-property: transform, border;
         order: 0;
         margin: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-size: 2rem;
     }
-    
-    .action-stack.random-anim {
+    /* .action-stack.random-anim {
         animation: random-scale 200ms ease-in forwards;
-    }
+    } */
     
     @keyframes random-scale {
         0% {
@@ -658,6 +716,7 @@
         padding-top: 5rem;
         padding-bottom: 4rem;
         user-select: none;
+        overflow: hidden;
     }
     
     .result-event {
@@ -665,7 +724,7 @@
     }
     
     .action-stack.selected {
-        border: 2px solid var(--main);
+        color: var(--main);
     }
     
     .action-stack:not(.action-stack-empty):hover {
@@ -902,6 +961,12 @@
         margin-top: 1rem;
     }
     
+    @media screen and (max-width:464px) {
+        .work .sliders-controls {
+            display: none;
+        }
+    }
+    
     .work-slide-title {
         font-size: 1.5rem;
         font-weight: 600;
@@ -993,7 +1058,7 @@
         overflow: hidden;
         padding-bottom: 4rem;
         margin: 0;
-        padding-top: 8rem;
+        padding-top: 2.5rem;
     }
     
     .programing .h2 {
@@ -1001,8 +1066,9 @@
         padding-right: 1rem;
     }
     
-    .programing .sub-title {
-        margin-bottom: 2rem;
+    .programing .slider-descr {
+        font-size: 1.2rem;
+        font-weight: 400;
     }
     
     .details {
