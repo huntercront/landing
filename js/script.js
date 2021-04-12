@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // }
 
     let playGames = document.querySelectorAll('[data-stack]');
-    const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
+    const luckCombo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     var curenttext = 0;
     var numbersCount = 0;
     document.querySelector('.total-stack').textContent = luckCombo.length;
