@@ -633,6 +633,51 @@
         animation: slide-easy 600ms ease forwards;
     }
     
+    @media(max-width:1027px) {
+        .ofset-2,
+        .ofset-1 {
+            margin-top: 0rem;
+        }
+        .case-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .case-inner .case-img {
+            flex: 0 0 50%;
+        }
+        .case-descr {
+            padding: 2rem;
+        }
+        .ofset-1 .case-descr {
+            order: 1;
+        }
+        .ofset-1 .case-img {
+            order: 2;
+        }
+    }
+    
+    @media(max-width:674px) {
+        .case-inner {
+            flex-direction: column;
+            align-items: unset;
+            justify-content: unset;
+        }
+        .case-inner .case-img {
+            flex: 0 0 100%;
+        }
+        .case-descr {
+            padding: 1rem;
+            padding-top: 0;
+        }
+        .ofset-1 .case-descr {
+            order: 2;
+        }
+        .ofset-1 .case-img {
+            order: 1;
+        }
+    }
+    
     @keyframes slide-easy {
         0% {
             transform: translate(0, -20%);
