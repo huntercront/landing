@@ -604,6 +604,46 @@
         font-weight: bold;
         font-size: 0.8rem;
     }
+    /* case */
+    
+    .case-img img {
+        width: 100%;
+    }
+    
+    .case .h4 {
+        font-size: 1.5rem;
+        line-height: 1.1;
+    }
+    
+    .case .capture {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+        margin-top: 1rem;
+    }
+    
+    .ofset-1 {
+        margin-top: 4rem;
+    }
+    
+    .ofset-2 {
+        margin-top: 8rem;
+    }
+    
+    .slide-easy {
+        animation: slide-easy 600ms ease forwards;
+    }
+    
+    @keyframes slide-easy {
+        0% {
+            transform: translate(0, -20%);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(0, 0);
+            visibility: visible;
+            opacity: 1;
+        }
+    }
     
     @media(max-width:1027px) {
         .sliders-controls {
@@ -694,6 +734,49 @@
         font-size: 1.5rem;
         font-weight: 700;
         font-size: 2rem;
+    }
+    
+    .restart-event-inner {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    
+    .restart-event {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(15%) scale(0.98);
+        transition: 200ms ease-in;
+        transition-property: visibility, transform, opacity;
+    }
+    
+    .restart-event.active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    
+    .retry {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 4rem;
+        background: #F3F7FA;
+        border: none;
+        transition: 120ms ease-in;
+        transition-property: background;
+    }
+    
+    .retry:hover {
+        background: #dde2e6;
+    }
+    
+    .retry:focus {
+        outline: none;
     }
     
     .action-stack:nth-child(odd) {
@@ -969,6 +1052,7 @@
         position: static;
         transform: translate(0);
         margin-top: 1rem;
+        padding-right: 0;
     }
     
     @media screen and (max-width:464px) {
@@ -1131,12 +1215,16 @@
     
     .ide-inner {
         display: flex;
+        position: relative;
     }
     
     .code-write {
         color: #ffffff;
         height: 100%;
         padding: 1rem;
+        position: absolute;
+        top: 0;
+        left: 3rem;
     }
     
     .opmin {

@@ -254,15 +254,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let playGames = document.querySelectorAll('[data-stack]');
     const luckCombo = [1, 2, 3, 4, 7, 8, 9, 10, 11];
     var curenttext = 0;
+    var numbersCount = 0;
     document.querySelector('.total-stack').textContent = luckCombo.length;
 
     playGames.forEach(function(playGame) {
         playGame.addEventListener('click', function() {
             let curentNumber = parseInt(this.getAttribute('data-stack'));
             let curentEl = this;
+            let selectedNumber = this.getAttribute('data-stack')
+            let selctedEls = document.querySelectorAll('[data-stack="' + selectedNumber + '"]')
+
 
             playGames.forEach(function(playGame) {
-                // playGame.style.order = randomInteger(0, playGames.length)
                 playGame.classList.add('random-anim')
                 setTimeout(function() {
                     playGame.classList.remove('random-anim')
@@ -273,27 +276,52 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if (contains(luckCombo, curentNumber) == true) {
                 if (curentEl.classList.contains('selected')) {
                     curenttext = curenttext - 1;
+                    numbersCount = numbersCount - 1;
                     document.querySelector('.curent-stack').textContent = parseInt(curenttext);
-                    curentEl.classList.remove('selected');
+                    selctedEls.forEach(function(selctedEl) {
+                        selctedEl.classList.remove('selected');
+                    })
                 } else {
                     curenttext = curenttext + 1;
+                    numbersCount = numbersCount + 1;
                     document.querySelector('.curent-stack').textContent = parseInt(curenttext);
-                    curentEl.classList.add('selected');
+                    selctedEls.forEach(function(selctedEl) {
+                        selctedEl.classList.add('selected');
+                    })
                 }
             } else {
                 if (curentEl.classList.contains('selected')) {
-                    curentEl.classList.remove('selected');
+                    numbersCount = numbersCount - 1;
+                    selctedEls.forEach(function(selctedEl) {
+                        selctedEl.classList.remove('selected');
+                    })
                 } else {
-                    curentEl.classList.add('selected');
+                    numbersCount = numbersCount + 1;
+                    selctedEls.forEach(function(selctedEl) {
+                        selctedEl.classList.add('selected');
+                    })
                 }
             }
             if (curenttext == luckCombo.length) {
                 document.querySelector('.action').classList.add('action-complite')
             }
+
+            if (numbersCount == luckCombo.length) {
+                document.querySelector('.restart-event').classList.add('active')
+            }
+            let retry = document.querySelector('.retry')
+            retry.addEventListener('click', function(e) {
+                playGames.forEach(function(playGame) {
+                    playGame.classList.remove('selected')
+                })
+                document.querySelector('.restart-event').classList.remove('active')
+                curenttext = 0;
+                numbersCount = 0;
+                document.querySelector('.curent-stack').textContent = parseInt(curenttext);
+            })
             let restartGame = document.querySelector('.action-overlay')
             restartGame.addEventListener('click', function() {
                 playGames.forEach(function(playGame) {
-                    playGame.style.order = randomInteger(0, playGames.length)
                     playGame.classList.remove('selected')
                 })
                 document.querySelector('.action').classList.remove('action-complite')
