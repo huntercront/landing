@@ -1293,6 +1293,16 @@ html {
     display: none;
 }
 
+.animated-svg img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-animated {
+    background: #A100FF;
+    padding: 4rem 0;
+}
+
 
 /* typography */
 
@@ -1328,8 +1338,8 @@ html.wf-active body {
 .run {
     display: block;
     position: fixed;
-    left: 3rem;
-    bottom: 3rem;
+    left: 1rem;
+    bottom: 1rem;
     z-index: 100;
     width: 4rem;
     height: 4rem;
@@ -1363,73 +1373,15 @@ html.wf-active body {
     line-height: 0.9;
 }
 
-.hero .h1 {
+.hero .h1,
+.hero-animated .h1 {
     max-width: 1200px;
     color: #fff;
     position: relative;
     max-width: 672px;
     margin: 0;
-}
-
-.video-saund,
-.video-zoom {
-    width: 2.5rem;
-    height: 2.5rem;
-    background: transparent;
-    border: none;
-    outline: none;
-    opacity: 1;
-    transition: opacity 200ms ease-in-out;
-    position: relative;
-}
-
-.video-saund {
-    width: 2rem;
-    height: 2rem;
-}
-
-.video-zoom:hover,
-.video-zoom:hover {
-    opacity: 0.7;
-}
-
-.video-controls {
-    margin-top: 2rem;
-}
-
-.video-controls button:focus {
-    outline: none;
-}
-
-.off-sound,
-.on-sound {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 200ms ease-in-out;
-}
-
-.on-sound {
-    opacity: 1;
-}
-
-.sound .off-sound {
-    opacity: 1;
-}
-
-.sound .on-sound {
-    opacity: 0;
-}
-
-.video-saund {
-    margin-right: 1rem;
-}
-
-.video-saund img,
-.video-zoom img {
-    width: 100%;
+    margin: 2rem 0rem 2rem 0rem;
+    text-shadow: 5px -5px 1px #A100FF, 6px -6px 1px #fff, 9px -9px 1px #A100FF, 10px -10px 1px #fff, 13px -13px 1px #A100FF, 14px -14px 1px #fff;
 }
 
 @media screen and (max-width: 767px) {
@@ -1572,7 +1524,7 @@ html.wf-active body {
 }
 
 .stack-el {
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .acn-logo {

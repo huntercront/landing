@@ -1,0 +1,8 @@
+<svg class="lines"
+	xmlns="http://www.w3.org/2000/svg">
+	<line fill="none" stroke="#d0f224" data-animation-delay=".1s" stroke-width="3" x1="101" y1="280.7" x2="206.9" y2="111" style=""></line>
+	<path fill="none" stroke="#979797" data-animation-delay=".2s" d="M252,642.1L583.5,111" style=""></path>
+	<line class="lines__line  line--from-top" fill="none" stroke="#979797" data-animation-delay=".3s" x1="228" y1="143.1" x2="314" y2="5.5" style=""></line>
+	<path class="lines__line" fill="none" stroke="#d0f224" data-animation-delay=".3s" stroke-width="3" d="M94,673.1l264.8-424.1 M454,142.7L546-1.5" style=""></path>
+	<line class="lines__line" fill="none" stroke="#979797" data-animation-delay=".4s" x1="0.5" y1="720" x2="332" y2="188.9" style=""></line>
+</svg>

@@ -13,26 +13,26 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })(document);
 
-let video = document.querySelector('.hero-bg video');
-document.querySelector('.video-saund').addEventListener('click', function(e) {
-    if (this.classList.contains('sound')) {
-        video.muted = true;
-        this.classList.toggle('sound')
-    } else {
-        video.muted = false;
-        this.classList.toggle('sound')
-    }
-})
-document.querySelector('.video-zoom').addEventListener('click', function(e) {
+// let video = document.querySelector('.hero-bg video');
+// document.querySelector('.video-saund').addEventListener('click', function(e) {
+//     if (this.classList.contains('sound')) {
+//         video.muted = true;
+//         this.classList.toggle('sound')
+//     } else {
+//         video.muted = false;
+//         this.classList.toggle('sound')
+//     }
+// })
+// document.querySelector('.video-zoom').addEventListener('click', function(e) {
 
-    if (video.requestFullscreen) {
-        video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) { /* Safari */
-        video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) { /* IE11 */
-        video.msRequestFullscreen();
-    }
-})
+//     if (video.requestFullscreen) {
+//         video.requestFullscreen();
+//     } else if (video.webkitRequestFullscreen) { /* Safari */
+//         video.webkitRequestFullscreen();
+//     } else if (video.msRequestFullscreen) { /* IE11 */
+//         video.msRequestFullscreen();
+//     }
+// })
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
             let tab = '&nbsp;&nbsp;';
-            let printText = ['<span class="opmin">//Hello World на C</span><br>' + '#include <stdio.h><br>int main(){<br> printf("Hello, World!");<br> return 0;<br>}', '<span class="opmin">//Hello World на Java</span><br>' + 'class HelloWorld {<br>' + tab + tab + 'public static void main(String[] args) {<br>' + tab + tab + 'System.out.println("Hello, World!");<br>' + tab + '}<br>}', '<span class="opmin">//Hello World на Swift</span><br>' + 'import Swift<br>print("Hello, World!")']
+            let printText = ['Let Rectangle = class {<br>' + tab + 'constructor(height, width) {<br>' + tab + tab + 'this.height = height;<br>' + tab + tab + 'this.width = width;<br>' + tab + tab + '} <br>};<br>console.log(Rectangle.name);']
 
             var typed = new Typed('.print-text', {
                 strings: printText,
@@ -305,10 +305,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if (curenttext == luckCombo.length) {
                 document.querySelector('.action').classList.add('action-complite')
             }
-
-            if (numbersCount == luckCombo.length) {
+            console.log(curenttext != luckCombo.length)
+            if (numbersCount == luckCombo.length && curenttext != luckCombo.length) {
                 document.querySelector('.restart-event').classList.add('active')
             }
+
             let retry = document.querySelector('.retry')
             retry.addEventListener('click', function(e) {
                 playGames.forEach(function(playGame) {
@@ -319,14 +320,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 numbersCount = 0;
                 document.querySelector('.curent-stack').textContent = parseInt(curenttext);
             })
-            let restartGame = document.querySelector('.action-overlay')
-            restartGame.addEventListener('click', function() {
-                playGames.forEach(function(playGame) {
-                    playGame.classList.remove('selected')
+            let restartGames = document.querySelectorAll('.action-overlay,.action-message .close-modal')
+            restartGames.forEach(function(restartGame) {
+                restartGame.addEventListener('click', function() {
+
+                    playGames.forEach(function(playGame) {
+                        playGame.classList.remove('selected')
+                    })
+                    document.querySelector('.action').classList.remove('action-complite')
+                    curenttext = 0;
+                    document.querySelector('.curent-stack').textContent = parseInt(curenttext);
                 })
-                document.querySelector('.action').classList.remove('action-complite')
-                curenttext = 0;
-                document.querySelector('.curent-stack').textContent = parseInt(curenttext);
             })
         })
     })
