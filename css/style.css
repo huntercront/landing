@@ -227,7 +227,7 @@ a.link-strong.blue-color {
 }
 
 .blog {
-    padding-top: 8rem;
+    padding-top: 3rem;
 }
 
 .blog .ms-12 .row {
@@ -846,8 +846,12 @@ section+section {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    animation: left-right 20s linear infinite;
-    min-height: 16rem;
+    animation: left-right 40s linear infinite;
+    min-height: 8rem;
+}
+
+.action-block.firs-line {
+    animation: right-left 40s linear infinite;
 }
 
 @keyframes left-right {
@@ -861,10 +865,10 @@ section+section {
 
 @keyframes right-left {
     0% {
-        transform: translate(-100%);
+        transform: translate(-50%);
     }
     100% {
-        transform: translate(100%);
+        transform: translate(0%);
     }
 }
 
@@ -884,6 +888,13 @@ section+section {
     font-size: 1.5rem;
     font-weight: 700;
     font-size: 2rem;
+}
+
+.stack-col {
+    overflow: hidden;
+    background: #A100FF;
+    border-radius: 1rem;
+    margin: 10px 0;
 }
 
 .restart-event-inner {
@@ -929,14 +940,6 @@ section+section {
     outline: none;
 }
 
-.action-stack:nth-child(odd) {
-    transform: translate(0, -2rem);
-}
-
-.action-stack:nth-child(3n+2) {
-    transform: translate(0, 2rem);
-}
-
 
 /* .action-stack.random-anim {
         animation: random-scale 200ms ease-in forwards;
@@ -960,8 +963,7 @@ section+section {
     padding-bottom: 4rem;
     user-select: none;
     overflow: hidden;
-    margin-top: 10rem;
-    background: var(--gray-bg);
+    margin-top: 5rem;
 }
 
 .result-event {
@@ -969,7 +971,8 @@ section+section {
 }
 
 .action-stack.selected {
-    color: var(--main);
+    color: #fff;
+    text-shadow: 5px 5px 1px #a100ff, 6px 6px 1px #fff, 9px 9px 1px #a100ff, 10px 10px 1px #fff;
 }
 
 .action-stack:hover {

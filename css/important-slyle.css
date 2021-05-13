@@ -1699,7 +1699,8 @@
     .programing .container,
     .lecture .container,
     .in-chat .container,
-    .blog .container {
+    .blog .container,
+    .action .container {
         max-width: 1100px;
     }
     

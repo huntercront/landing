@@ -246,16 +246,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return arr.indexOf(elem) != -1;
     }
 
-    // function randomInteger(min, max) {
-    //     let rand = min - 0.5 + Math.random() * (max - min + 1);
-    //     return Math.round(rand);
-    // }
+    function randomInteger(min, max) {
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rand);
+    }
 
     let playGames = document.querySelectorAll('[data-stack]');
-    const luckCombo = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var curenttext = 0;
-    var numbersCount = 0;
+    const luckCombo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    var curenttext = 15;
+    var numbersCount = 15;
+
     document.querySelector('.total-stack').textContent = luckCombo.length;
+
+
 
     playGames.forEach(function(playGame) {
         playGame.addEventListener('click', function() {
