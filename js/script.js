@@ -493,4 +493,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         })
     })
 
+    let showText = document.querySelector('.lecture-info .read-descr')
+    showText.addEventListener('click', function(e) {
+        if (this.classList.contains('text-vivsible')) {
+            slideToggle(document.querySelector('.lecture-info .hidden-text'), 200);
+            this.classList.remove('text-vivsible');
+            this.querySelector('.read-descr-text').textContent = 'Подробнее'
+        } else {
+            slideToggle(document.querySelector('.lecture-info .hidden-text'), 200);
+            this.classList.add('text-vivsible');
+            this.querySelector('.read-descr-text').textContent = 'Скрыть'
+        }
+    })
 })
