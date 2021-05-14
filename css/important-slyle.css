@@ -1299,7 +1299,7 @@
     }
     
     .hero-animated {
-        background: #A100FF;
+        background: #4F0172;
         padding: 4rem 0;
     }
     /* typography */
@@ -1396,7 +1396,7 @@
         max-width: 672px;
         margin: 0;
         margin: 1rem 0rem 3rem 0rem;
-        text-shadow: 5px 5px 1px #A100FF, 6px 6px 1px #fff, 9px 9px 1px #A100FF, 10px 10px 1px #fff;
+        text-shadow: 5px 5px 1px #4F0172, 6px 6px 1px #fff, 9px 9px 1px #4F0172, 10px 10px 1px #fff;
     }
     
     @media screen and (max-width: 767px) {
