@@ -253,8 +253,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     let playGames = document.querySelectorAll('[data-stack]');
     const luckCombo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    var curenttext = 0;
-    var numbersCount = 0;
+    var curenttext = 15;
+    var numbersCount = 15;
 
     document.querySelector('.total-stack').textContent = luckCombo.length;
 
