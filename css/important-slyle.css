@@ -1339,8 +1339,9 @@
         left: 1rem;
         bottom: 1rem;
         z-index: 100;
-        width: 4rem;
-        height: 4rem;
+        width: auto;
+        padding-right: 3rem;
+        height: 3rem;
         overflow: hidden;
         border-radius: 4rem;
         background: var(--brand);
@@ -1351,14 +1352,30 @@
         font-weight: 600;
     }
     
+    .run.tlg-chat {
+        bottom: 5rem;
+        height: 3rem;
+        width: 3rem;
+        background: #24A1DF;
+    }
+    
+    .run.tlg-chat .run-icon {
+        width: 3rem;
+        height: 3rem;
+        flex: 0 0 3rem;
+    }
+    
+    .run.tlg-chat .run-icon svg {
+        width: 50%;
+    }
+    
     .run:hover {
-        width: calc(5rem + 9ch);
         color: #fff;
     }
     
     .run-icon {
-        width: 4rem;
-        height: 4rem;
+        width: 3rem;
+        height: 3rem;
         flex: 0 0 4rem;
     }
     
@@ -1472,23 +1489,6 @@
         height: 100%;
     }
     
-    .hero-bg video {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(0, -15%);
-    }
-    
-    @media screen and (max-width:1100px) {
-        .hero-bg video {
-            height: 90vh;
-            width: auto;
-            left: 50%;
-            transform: translate(-50%, -15%)
-        }
-    }
-    
     .hero-content {
         height: 100%;
         padding: 2rem 0rem 1rem 0rem;
@@ -1531,50 +1531,6 @@
     
     .acn-text {
         fill: var(--black)
-    }
-    
-    .header {
-        background: #fff;
-        padding: 0.5rem 0rem;
-    }
-    
-    .nav ul li a {
-        font-weight: 400;
-        color: var(--black);
-        font-size: 0.85rem;
-        line-height: 1;
-        display: block;
-        padding: 0.75rem;
-        max-width: 160px;
-        z-index: 10;
-    }
-    
-    .nav ul li {
-        line-height: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 4rem;
-        position: relative;
-        z-index: 10;
-    }
-    
-    .nav ul li span {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        transition: 20ms ease-in;
-        transition-property: width;
-        background: var(--gray-bg);
-        z-index: 1;
-    }
-    
-    .nav ul {
-        list-style: none;
-        height: 100%;
-        margin: 0;
-        padding: 0;
     }
     
     .logo {
@@ -1648,6 +1604,30 @@
         padding: 5rem 0;
     }
     
+    @media screen and (max-width:1024px) {
+        .title-text {
+            font-size: 3rem;
+        }
+        .title-text.title-l {
+            font-size: 2rem;
+        }
+    }
+    
+    @media screen and (max-width:740px) {
+        .title-text {
+            font-size: 2.25rem;
+        }
+        .title-text.title-l {
+            font-size: 1.75rem;
+        }
+        .title-sub {
+            font-size: 1.2rem;
+        }
+        .programing {
+            padding-bottom: 2rem;
+        }
+    }
+    
     .video-about {
         position: relative;
         max-width: 880px;
@@ -1700,7 +1680,10 @@
     .lecture .container,
     .in-chat .container,
     .blog .container,
-    .action .container {
+    .action .container,
+    .work .container,
+    .case .container,
+    .vacancy .container {
         max-width: 1100px;
     }
     
@@ -1739,7 +1722,8 @@
         background: #A100FF;
     }
     
-    .button {
+    .button,
+    .vacancy-btn {
         position: relative;
         left: 0;
         top: 0;
@@ -1761,6 +1745,19 @@
     
     .button+.button {
         margin-left: 0.5rem;
+    }
+    
+    .vacancy-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .vacancy-btn:hover {
+        color: #fff;
+        transform: translate(0, -2px);
+        box-shadow: 0px 8px 20px rgb(161 0 255 / 20%);
     }
     
     .button:hover {

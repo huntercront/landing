@@ -240,7 +240,8 @@ a.link-strong.blue-color {
     margin-top: 1rem;
 }
 
-.blog h2 {
+.blog h2,
+.work h2 {
     margin-bottom: 2.5rem;
 }
 
@@ -674,15 +675,22 @@ section+section {
     transform: translate(0, 0);
 }
 
+.slider-buttons {
+    background: #F5F5F5;
+    border-radius: 3rem;
+    max-width: 10rem;
+    margin: 0 auto;
+}
+
 .slide-button {
-    border: 1px solid #004DFF;
-    background: transparent;
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    width: 3rem;
+    border: none;
+    height: 3rem;
     margin: 0 0.35rem;
     transition: 200ms ease-in;
     transition-property: transform;
+    background: #A100FF;
 }
 
 .slide-button:focus {
@@ -695,7 +703,7 @@ section+section {
 
 .slide-button img {
     width: 100%;
-    max-width: 35px;
+    max-width: 1.5rem;
 }
 
 .sliders-controls {
@@ -736,6 +744,14 @@ section+section {
     width: 100%;
 }
 
+.case {
+    padding: 4rem 0;
+}
+
+.case .text-block {
+    margin-bottom: 1rem;
+}
+
 .case .h4 {
     font-size: 1.5rem;
     line-height: 1.1;
@@ -745,14 +761,6 @@ section+section {
     font-size: 0.9rem;
     margin-bottom: 0.2rem;
     margin-top: 1rem;
-}
-
-.ofset-1 {
-    margin-top: 4rem;
-}
-
-.ofset-2 {
-    margin-top: 8rem;
 }
 
 .slide-easy {
@@ -888,6 +896,8 @@ section+section {
     font-size: 1.5rem;
     font-weight: 700;
     font-size: 2rem;
+    color: #fff;
+    opacity: 0.5;
 }
 
 .stack-col {
@@ -972,7 +982,12 @@ section+section {
 
 .action-stack.selected {
     color: #fff;
+    opacity: 1;
     text-shadow: 5px 5px 1px #a100ff, 6px 6px 1px #fff, 9px 9px 1px #a100ff, 10px 10px 1px #fff;
+}
+
+.action-stack.selected:hover {
+    opacity: 0.8;
 }
 
 .action-stack:hover {
@@ -1233,6 +1248,7 @@ div.wpcf7 .ajax-loader {
     position: relative;
     overflow: hidden;
     background: #353541;
+    border-radius: 1rem;
 }
 
 .work .h2 {
@@ -1301,6 +1317,11 @@ div.wpcf7 .ajax-loader {
     min-height: 30rem;
 }
 
+.slider-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 .work .sliders-controls {
     position: static;
     transform: translate(0);
@@ -1322,11 +1343,11 @@ div.wpcf7 .ajax-loader {
 }
 
 .slide-number {
-    font-weight: 300;
+    font-weight: 600;
     position: absolute;
-    left: 0.5rem;
-    top: 0.5rem;
-    font-size: 1.5rem;
+    left: 1rem;
+    top: 1rem;
+    font-size: 1.2rem;
 }
 
 .work-slider {
@@ -1741,13 +1762,25 @@ div.wpcf7 .ajax-loader {
     margin-bottom: 6rem;
 }
 
+.vacancy .text-block {
+    margin-bottom: 1.5rem;
+}
+
+.vacancy .title-l {
+    margin-bottom: 0.5rem;
+}
+
+.vacancy .title-sub {
+    font-size: 1.2rem;
+}
+
 .vacancy-button {
-    background: transparent;
-    border: 1px solid #004DFF;
+    background: #A100FF;
     border-radius: 2.5rem;
     height: 2.5rem;
     width: 2.5rem;
     position: relative;
+    border: none;
     display: block;
     transition: 200ms ease-in;
     transition-property: transform;
@@ -1915,7 +1948,9 @@ ul.list-items li:before {
     .vacancy-button {
         top: 1rem;
     }
-    .how-in-content {}
+    .lecture-person {
+        border-radius: 1rem;
+    }
 }
 
 @media(max-width:674px) {
@@ -1964,4 +1999,93 @@ ul.list-items li:before {
 
 .form-inner {
     display: block;
+}
+
+@media screen and (max-width:740px) {
+    .programing {
+        padding-bottom: 2rem;
+    }
+    .lecture {
+        margin: 0;
+    }
+    .lecture-person {
+        margin-right: 0;
+    }
+    .lecture-info {
+        margin-top: 2rem;
+    }
+    .in-chat {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width:740px) {
+    .buttons-line {
+        flex-wrap: wrap;
+    }
+    .button+.button {
+        margin: 0;
+        margin-top: 0.75rem;
+    }
+    .buttons-line .button {
+        width: 100%;
+        flex: 0 0 100%;
+        text-align: center;
+        display: block;
+    }
+}
+
+@media screen and (max-width:664px) {
+    .tlg-img-inner {
+        max-width: 200px;
+        margin-top: 1rem;
+        transform: translate(10%, 0) rotate(5deg);
+    }
+    .in-chat .cta-img {
+        right: 30%;
+    }
+    .in-chat {
+        padding-top: 3rem;
+    }
+    .blog-descr {
+        padding: 1rem;
+    }
+    .blog-descr .common-text {
+        margin-bottom: 1.5rem;
+    }
+    .action-stack {
+        font-size: 1.5rem;
+    }
+    .action-block {
+        min-height: 5rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .program-img {
+        padding: 2rem 1rem 3rem 1rem;
+    }
+    .program-img .cta-img {
+        bottom: 1rem;
+        right: 10%;
+        width: 200px;
+    }
+    #programming>div>div.row.c-c {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+    #programming>div>div.row.c-c>div {
+        padding: 0;
+    }
+    .program-img:before {
+        border-radius: 0rem;
+    }
+    .video-about-inner,
+    .video-about-wrapper:before {
+        border-radius: 0.7rem;
+    }
+    .video-about .cta-img {
+        max-width: 250px;
+        top: 2rem;
+    }
 }
